@@ -260,6 +260,21 @@ namespace UnityEditor.TestTools.TestRunner
             return buildOptions;
         }
         
-        
+        private static bool ShouldReduceBuildLocationPathLength(BuildTarget target)
+        {
+            switch (target)
+            {
+#if UNITY_2020_2_OR_NEWER
+                case BuildTarget.GameCoreXboxOne:
+                case BuildTarget.GameCoreXboxSeries:
+#else
+                case BuildTarget.XboxOne:
+#endif
+                case BuildTarget.WSAPlayer:
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
 }
