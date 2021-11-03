@@ -6,7 +6,6 @@ using Leap.Unity;
 using Leap;
 
 using UnityEngine;
-
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField]
@@ -72,21 +71,12 @@ public class InventoryManager : MonoBehaviour
     {
         if (Hand != null)
         {
-            gameObject.transform.position = LeapV3ToUnityV3(Hand.PalmPosition);
-            gameObject.transform.rotation = LeapQuatToUnityQuat(Hand.Rotation);
-            
+            gameObject.transform.position = LeapUnityUtils.LeapV3ToUnityV3(Hand.PalmPosition);
+            gameObject.transform.rotation = LeapUnityUtils.LeapQuatToUnityQuat(Hand.Rotation);         
         }
     }
 
-    private Vector3 LeapV3ToUnityV3(Leap.Vector v)
-    {
-        return new Vector3(v.x, v.y, v.z);
-    }
 
-    private Quaternion LeapQuatToUnityQuat(Leap.LeapQuaternion q)
-    {
-        return new Quaternion(q.x, q.y, q.z, q.w);
-    }
 
 
 
