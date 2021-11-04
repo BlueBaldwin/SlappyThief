@@ -38,5 +38,6 @@ public class ClickToMoveScript : MonoBehaviour
     void SetDestination(Vector3 target)
     {
         myNavMeshAgent.SetDestination(target);
+        return;
     }
 }

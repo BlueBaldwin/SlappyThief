@@ -342,19 +342,19 @@
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Plastic.Newtonsoft.Json">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Plastic.Antlr3.Runtime">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="log4netPlastic">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
      </Reference>
      <Reference Include="unityplastic">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/PackageCache/com.unity.collab-proxy@1.9.0/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -705,61 +705,61 @@
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.TestRunner">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.TestRunner">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VSCode.Editor">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro.Editor">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualStudio.Editor">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.XR.Management.Editor">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline.Editor">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
      </Reference>
      <Reference Include="Unity.XR.Management">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Subsystem.Registration">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.PlasticSCM.Editor">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.SpatialTracking">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Rider.Editor">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.UI">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.SpatialTracking">
-     <HintPath>C:/Dev/CT5051/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+     <HintPath>C:/Dev/Uni/CT5051 - Experimental Games/Presentation2/SlappyThief/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
