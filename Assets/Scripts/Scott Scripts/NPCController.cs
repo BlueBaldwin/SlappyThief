@@ -20,6 +20,8 @@ public class NPCController : MonoBehaviour
 
     private bool movePosition = true;
     private bool startTimer = false;
+    private bool changeTarget = false;
+    
     private int totalWaypoints;
     private int randomPosition;
     private float timer = 5f;
@@ -30,49 +32,48 @@ public class NPCController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         totalWaypoints = waypoints.Count;
+        SetDestination();
     }
 
     private void Update()
     {
-        if (startTimer == false && timer > 0)           // Need timer to start once arrived at pos
+        if (startTimer == false && timer > 0)           // Need timer to start once arrived at target 
         {
             StartCoroutine(ShoppingTimer());
         }
-        if (movePosition)
+        if (changeTarget)
         {
-           SetDestination();
+            //ChangePosition();                     // Too be created
         }
-        
-        Debug.Log(currentTarget);
 
     }
     // Setting a new Destination initially and once called
     private void SetDestination()
     {
-        if (navMeshAgent != null)
+        if (navMeshAgent != null && movePosition)
         {
             randomPosition = Random.Range(1, totalWaypoints);
             currentTarget = waypoints[randomPosition];
-            movePosition = false;
+            movePosition = false;                   // needs to be set to true once npc reaches target
             return;
         }
     }
-    // Initiating the NPC's Movement to the destination
-    private void Move()
-    {
-        navMeshAgent.destination = currentTarget.position;
-    }
-
+    
     IEnumerator ShoppingTimer()
     {
-        startTimer = true;
+        startTimer = true;      // Set to true to stop multiple co-routines being set off at once
         yield return new WaitForSeconds(1);
         timer -= 1;
-        startTimer = false; // Needs resting once NPC arrives at the location set
+        startTimer = false;     // Resets back to false after the 
         if (startTimer == false && timer <= 0)
         {
             Move();
         }
-        
+    }
+    
+    // Initiating the NPC's Movement to the destination
+    private void Move()
+    {
+        navMeshAgent.destination = currentTarget.position;
     }
 }
