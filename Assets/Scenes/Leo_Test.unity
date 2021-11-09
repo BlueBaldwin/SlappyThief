@@ -153,6 +153,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &16762871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6687008331030621051, guid: 82c3adc5d7c74a348b465c69ed7ac7d4, type: 3}
+  m_PrefabInstance: {fileID: 5721014097814415781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &16762872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16762871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e70e82c3594cf548b3061aaff58e128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nma: {fileID: 0}
+  waypoint:
+  - {fileID: 5743640}
+  - {fileID: 25672975}
+  - {fileID: 531336928}
+  - {fileID: 1858186555}
+  - {fileID: 615011909}
+  - {fileID: 959326557}
+  - {fileID: 458019440}
+  - {fileID: 1348072518}
+  currentWaypoint: 0
 --- !u!1 &25672975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1881,10 @@ PrefabInstance:
       propertyPath: movePositionTransform
       value: 
       objectReference: {fileID: 1901051300}
+    - target: {fileID: 6202504956636372287, guid: 82c3adc5d7c74a348b465c69ed7ac7d4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6202504956636372287, guid: 82c3adc5d7c74a348b465c69ed7ac7d4, type: 3}
       propertyPath: waypoints.Array.size
       value: 8
