@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.25
+    agentRadius: 0.15
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.083333336
+    cellSize: 0.05
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16762871}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e70e82c3594cf548b3061aaff58e128, type: 3}
   m_Name: 
@@ -186,6 +186,28 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 1341170168, guid: 82c3adc5d7c74a348b465c69ed7ac7d4, type: 3}
   m_PrefabInstance: {fileID: 5721014097814415781}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &16762879 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6981957462015660247, guid: 82c3adc5d7c74a348b465c69ed7ac7d4, type: 3}
+  m_PrefabInstance: {fileID: 5721014097814415781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &16762880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16762871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6201764cee785e34bb5c447e2cc60d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nma: {fileID: 0}
+  waypoint: []
+  currentWaypoint: 0
+  customerCentre: {fileID: 16762879}
+  customerRadius: 7.5
 --- !u!1 &25672975
 GameObject:
   m_ObjectHideFlags: 0
