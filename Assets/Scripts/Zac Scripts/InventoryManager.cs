@@ -8,6 +8,7 @@ using Leap;
 using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
+    //variables
     [SerializeField]
     GameObject OpenSlot;
 
@@ -26,22 +27,21 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     float ItemScale;
     Hand Hand;
+
     List<GameObject> InventoryObjects;
 
     float OffsetX;
-
-    private void Start()
+   
+    public void Init()
     {
         if (InventoryObjects == null)
         {
             InventoryObjects = new List<GameObject>();
         }
-        OffsetX = BaseOffsetX;
-    }
 
-    public void Init()
-    {
-        for (int i = 0; i < SlotCount; ++i)
+        OffsetX = BaseOffsetX;
+
+        for (int i = 0; i < SlotCount; ++i) //create inventory with given parameters
         {
             GameObject g = Instantiate(OpenSlot);
             g.transform.parent = gameObject.transform;
@@ -53,13 +53,15 @@ public class InventoryManager : MonoBehaviour
 
     public void AttachToHand(Hand h)
     {
+        //attach inventory to hand, inventory X offset is flipped on right hands to ensure the inventory is always on the inside of the hand
         Hand = h;
         if (h.IsRight) OffsetX = -BaseOffsetX;
         else OffsetX = BaseOffsetX;
     }
 
-    void AddObjectSlot()
+    void AddObjectSlot() //not currently used
     {
+        //add additional slots to inventory
         SlotCount++;    
         GameObject g = Instantiate(OpenSlot);
         g.transform.parent = gameObject.transform;
@@ -67,14 +69,28 @@ public class InventoryManager : MonoBehaviour
         InventoryObjects.Add(g);
     }
 
+    void RemoveObjectSlot() //not currently used
+    {
+        //remove most recent slot added to inventory
+        GameObject g = InventoryObjects[SlotCount];
+        InventoryObjects.Remove(g);
+        Destroy(g);
+        SlotCount--;
+    }
+
     private void Update()
     {
         if (Hand != null)
         {
-            gameObject.transform.position = LeapUnityUtils.LeapV3ToUnityV3(Hand.PalmPosition);
+            //keep inventory moving with hand
+            //sett LeapUnityUtils.cs
+            gameObject.transform.position = LeapUnityUtils.LeapV3ToUnityV3(Hand.PalmPosition); 
             gameObject.transform.rotation = LeapUnityUtils.LeapQuatToUnityQuat(Hand.Rotation);         
         }
     }
+
+   
+
 
 
 
