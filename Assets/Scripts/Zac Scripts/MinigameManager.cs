@@ -2,125 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class MinigameManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject GameBase;
-    [SerializeField]
-    GameObject FoldPoint;
-    [SerializeField]
-    GameObject MinigameParent;
-
+    GameObject GameBase; //base gameobject that controls the transform of all minigames and their spawned objects
+    //currently MinigamePlane in the editor, used to rotate minigames to be in line with the camera
+    //(this is manually set currently, should probably make it rotate to camera on start but as long as we never rotate the camera it will be ok)
 
     [SerializeField]
-    float OffsetX;
-    [SerializeField]
-    float OffsetZ;
-    [SerializeField]
-    float OffsetY;
+    GameObject MinigamesParent; //empty gameobject that has all different minigames as it's children
 
-    enum Minigame 
-    {   
-        GAME_NONE = 0,
-        GAME_FOLD = 1,
-        GAME_SCAN = 2,
-    }
+    private List<Minigame> Minigames; //list of all minigame components 
 
-    Minigame ActiveGame = Minigame.GAME_NONE;
+    private int ActiveGame;
 
     public int GetActiveMinigame()
     {
-        return (int)ActiveGame;
+        return ActiveGame;
     }
 
     private void Start()
     {
         GameBase.SetActive(false);
+        ActiveGame = -1; //-1 is used for no active game. 0 would index to the first minigame of the list. Don't call Minigames[-1].Load everything will explode, make sure a minigame is active first
+        Minigames = new List<Minigame>(GetComponentsInChildren<Minigame>()); //searches children of MinigameParent for minigame components, then adds them to the list of possible minigames
     }
 
     public void LoadMinigame(int gameID)
     {
-        ActiveGame = (Minigame)gameID;
-        LoadMinigameInternal();
-    }
-
-    private void LoadMinigame(Minigame m)
-    {
-        if (ActiveGame != Minigame.GAME_NONE) UnloadMinigame();
-        ActiveGame = m;
-        LoadMinigameInternal();
-    }
-
-    void LoadMinigameInternal()
-    {
+        ActiveGame = gameID;
         GameBase.SetActive(true);
-        if(ActiveGame == Minigame.GAME_FOLD)
-        {
-            FoldMinigame();
-        }
-    }
-
-    private void Update()
-    {
-        bool hasGameEnded = true;
-        foreach(Transform t in MinigameParent.transform)
-        {
-            if (t.gameObject.activeInHierarchy)
-            {
-                hasGameEnded = false;
-                break;
-            }
-        }
-        if (hasGameEnded)
-        {
-            GameBase.SetActive(false);
-        }
-    }
-
-    void FoldMinigame()
-    {
-        //awful bad terrible test code i will delete this
-        Color c = Random.ColorHSV();
-        GameObject temp;
-        GameObject g =  Instantiate(FoldPoint, MinigameParent.transform);
-        g.GetComponent<MeshRenderer>().material.color = c;
-        g.transform.localPosition = new Vector3(-OffsetX,OffsetY,0);
-        temp = g;
-
-        g = Instantiate(FoldPoint, MinigameParent.transform);
-        g.GetComponent<MeshRenderer>().material.color = c;
-        g.transform.localPosition = new Vector3(-OffsetX / 2, OffsetY, OffsetZ);
-        temp.GetComponent<FoldPoint>().LinkedPoint = g.transform;
-
-        c = Random.ColorHSV();
-
-        g = Instantiate(FoldPoint, MinigameParent.transform);
-        g.transform.localPosition = new Vector3(OffsetX, OffsetY, 0);
-        g.GetComponent<MeshRenderer>().material.color = c;
-        temp = g;
-
-        g = Instantiate(FoldPoint, MinigameParent.transform);
-        g.transform.localPosition = new Vector3(OffsetX / 2, OffsetY, OffsetZ);
-        g.GetComponent<MeshRenderer>().material.color = c;
-        temp.GetComponent<FoldPoint>().LinkedPoint = g.transform;
-
-        c = Random.ColorHSV();
-
-        g = Instantiate(FoldPoint, MinigameParent.transform);
-        g.transform.localPosition = new Vector3(0, OffsetY, -OffsetZ);
-        g.GetComponent<MeshRenderer>().material.color = c;
-        temp = g;
-
-        g = Instantiate(FoldPoint, MinigameParent.transform);
-        g.transform.localPosition = new Vector3(0, OffsetY, OffsetZ);
-        g.GetComponent<MeshRenderer>().material.color = c;
-        temp.GetComponent<FoldPoint>().LinkedPoint = g.transform;
+        Minigames[ActiveGame].Load(GameBase); //calls custom load function for the active game
     }
 
     public void UnloadMinigame()
     {
-        ActiveGame = Minigame.GAME_NONE;
         GameBase.SetActive(false);
+        Minigames[ActiveGame].Unload(); //calls the generic unload function for all minigames, with the activegame as the target
+        ActiveGame = -1;
     }
 }
 

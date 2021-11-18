@@ -14,89 +14,76 @@ public class HandManager : MonoBehaviour
     LeapServiceProvider Provider;
 
     [SerializeField]
-    InventoryManager Inventory;
-
-    [SerializeField]
-    MinigameManager Minigames;
-
-    [SerializeField]
-    bool InventoryOnLeft;
-
-    [SerializeField]
     Hand Left;
     [SerializeField]
     Hand Right;
 
-    [SerializeField]
-    float MinigameOffset;
 
-    [SerializeField]
-    InteractionButton TestMinigameButton;
-
-    Vector3 OffsetVector;
-
+    Frame f;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        OffsetVector = new Vector3(0, MinigameOffset, -MinigameOffset);
-        TestMinigameButton.OnContactBegin = ToggleMinigame;
-        Inventory.Init();
-    }
 
-    void ToggleMinigame()
-    {
-        if (Minigames.GetActiveMinigame() == 0)
-        {
-            MinigameBegin(1);
-        }
-        else
-        {
-            MinigameEnd();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
+    public void Tick()
     {
         Left = null;
         Right = null;
-        Frame f = Provider.CurrentFrame;
-        AssignHands(f);
-        if (InventoryOnLeft && Left != null)
-        {
-            Inventory.AttachToHand(Left);
-        }
-        else if (!InventoryOnLeft && Right != null)
-        {
-            Inventory.AttachToHand(Right);
-        }
-        
+        f = Provider.CurrentFixedFrame; //update current frame
+        AssignHands(); //assign left/right hands, this must be done every frame as hands that leave/reenter the scene are not considered the same hand object in Leap
     }
 
-    void MinigameBegin(int i)
+    void AssignHands()
     {
-        Minigames.LoadMinigame(i);
-        Provider.gameObject.transform.position += OffsetVector;
-    }
-
-    void MinigameEnd()
-    {
-        Minigames.UnloadMinigame();
-        Provider.gameObject.transform.position -= OffsetVector;
-    }
-
-    void AssignHands(Frame f)
-    {
+        //check if hand is left or right and assign appropriately (this will work as long as there are not more than 2 hands in the scene).
         foreach (Hand h in f.Hands)
         {
-            if (h.IsLeft) Left = h;
+            if (h.IsLeft) Left = h; 
             else if (h.IsRight) Right = h;
             else Debug.LogError("Could not determine if hand was left or right!");
         }
     }
 
+    public List<Hand> GetHands()
+    {
+        return new List<Hand>() { Left, Right };
+    }
   
+    public void AddOffset(Vector3 v)
+    {
+        Provider.gameObject.transform.position += v;
+    }
+
+    public GameObject GetHandTarget(bool b)
+    {
+        Hand current = null;
+        //assign current hand depending on input bool
+        foreach(Hand h in f.Hands)
+        {
+            if(h.IsLeft == b)
+            {
+                current = h;
+            }
+            else
+            {
+                current = h;
+            }
+        }
+
+        if (current != null)
+        {
+            Finger index = current.GetIndex();
+            if (index != null)
+            {
+                //fire out ray to find out what we are pointing at with index finger
+                Ray ray = new Ray(LeapUnityUtils.LeapV3ToUnityV3(index.TipPosition), LeapUnityUtils.LeapV3ToUnityV3(index.Direction));
+                RaycastHit hit = new RaycastHit();
+                if (Physics.Raycast(ray, out hit, 1000))
+                {
+                    return hit.collider.gameObject; //return object we are pointing at 
+                }
+            }
+        }
+        return null;
+    }
 
 }
 
