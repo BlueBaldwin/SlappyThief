@@ -6,53 +6,39 @@ using UnityEngine.AI;
 public class CustomerAIV3 : MonoBehaviour
 {
     #region SerializeFields
-    [SerializeField]
-    NavMeshAgent nma = null;
-    //holds a pointer to the customers nma(nav mesh agent)
 
-    [SerializeField]
-    GameObject[] waypoint;
-
-    [SerializeField]
-    int currentWaypoint;
-
-    [SerializeField]
-    Transform customerCentre;
-
-    [SerializeField]
-    float customerRadius = 5;
     #endregion
 
     #region Variables
-
+    public float Range;
     #endregion
 
     #region Functions
-    //void Start () {
-    //    nma = this.GetComponent<NavMeshAgent>();    //waypoints will be used to find where the customer will go to next
-    //}
-
-    // Update is called once per frame
-    void Update()
+    bool RandomPoint(Vector3 center, float range, out Vector3 result) 
     {
-        
+
+		for (int i = 0; i < 30; i++)                                                    //
+        {                                                                               //
+            Vector3 randomPoint = center + Random.insideUnitSphere * range;             //
+            NavMeshHit hit;
+			if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))   //
+            {
+                result = hit.position;
+                return true; 
+			}
+        }
+        result = Vector3.zero;
+
+        return false;
     }
 
-    //void CustomerMovement () {
-    //    if (nma.hasPath == false) {
-    //        currentWaypoint = Random.Range(0, waypoint.Length + 1);             //this will randomly create a waypoint for the customer to go to from a selection of 
-    //                                                                            //current waypoints available
-    //        nma.SetDestination(waypoint[currentWaypoint].transform.position);   //set the customers position to a waypoint
-    //    }
-    //}
+    public Vector3 GetRandomPoint(Transform point = null, float radius = 0) {
+        Vector3 _point;
 
-    void ProximityCheck () {
-        Collider[] proxCheck = Physics.OverlapSphere(customerCentre.position, customerRadius);
-    }
-
-	private void OnDrawGizmos () {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(customerCentre.position, customerRadius);
+		if (RandomPoint(point == null?transform.position : point.position, radius == 0? Range : radius, out _point)) {
+            Debug.DrawRay(_point, Vector3.up, Color.black, 1);
+		}
+        return Vector3.zero;
 	}
 	#endregion
 }
