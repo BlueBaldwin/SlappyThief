@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 431976849434378811}
   - component: {fileID: 2457355634474645233}
   m_Layer: 0
-  m_Name: Empty Hangers
+  m_Name: HANGINGTSHIRT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8988765918729272656, guid: ad9b245cea82c47ff9684afe2a0c945b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6666662
+      value: -1.66
       objectReference: {fileID: 0}
     - target: {fileID: 8988765918729272656, guid: ad9b245cea82c47ff9684afe2a0c945b, type: 3}
       propertyPath: m_LocalScale.y
@@ -540,7 +540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8988765918729272656, guid: ad9b245cea82c47ff9684afe2a0c945b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6666662
+      value: -1.66
       objectReference: {fileID: 0}
     - target: {fileID: 8988765918729272656, guid: ad9b245cea82c47ff9684afe2a0c945b, type: 3}
       propertyPath: m_LocalScale.y
@@ -614,7 +614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8988765918729272656, guid: ad9b245cea82c47ff9684afe2a0c945b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6666663
+      value: -1.66
       objectReference: {fileID: 0}
     - target: {fileID: 8988765918729272656, guid: ad9b245cea82c47ff9684afe2a0c945b, type: 3}
       propertyPath: m_LocalScale.y
@@ -688,7 +688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8988765918729272656, guid: ad9b245cea82c47ff9684afe2a0c945b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6666663
+      value: -1.66
       objectReference: {fileID: 0}
     - target: {fileID: 8988765918729272656, guid: ad9b245cea82c47ff9684afe2a0c945b, type: 3}
       propertyPath: m_LocalScale.y
