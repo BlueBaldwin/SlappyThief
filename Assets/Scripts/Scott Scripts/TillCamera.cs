@@ -40,6 +40,8 @@ public class TillCamera : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         bCustomerWaiting = true;
+        bChangeToTillCam = true;
+        Debug.Log(bChangeToTillCam);
     }
 
     void EndTillCam()

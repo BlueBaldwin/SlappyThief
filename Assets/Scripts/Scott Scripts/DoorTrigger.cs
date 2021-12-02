@@ -38,10 +38,12 @@ public class DoorTrigger : MonoBehaviour
         if (bOpenDoors)
         {
             LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, leftDoorOpenPos.position, step);
+            RightDoor.transform.position = Vector3.MoveTowards(RightDoor.transform.position, rightDoorOpenPos.position, step);
         }
         if (bCloseDoors)
         {
             LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, leftDoorClosePos.position, step);
+            RightDoor.transform.position = Vector3.MoveTowards(RightDoor.transform.position, rightDoorClosePos.position, step);
         }
         
     }
