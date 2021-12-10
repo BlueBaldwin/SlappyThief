@@ -34,10 +34,10 @@ public class TimeManager : MonoBehaviour
             OnMinuteChanged?.Invoke();
             if (Minute >= 60)
             {
-                Hour++
-                Minute = 0
+                Hour++;
+                Minute = 0;
             }
-            timer = minuteToRealTime
+            timer = minuteToRealTime;
         }
     }
 }
