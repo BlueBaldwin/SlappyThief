@@ -23,7 +23,7 @@ public class HandManager : MonoBehaviour
 
     // Start is called before the first frame update
 
-    public void Tick()
+    public void Update()
     {
         Left = null;
         Right = null;
@@ -61,10 +61,7 @@ public class HandManager : MonoBehaviour
             if(h.IsLeft == b)
             {
                 current = h;
-            }
-            else
-            {
-                current = h;
+                break;
             }
         }
 

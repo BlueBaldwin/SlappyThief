@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
     //class that handles the current gamestate and delegates information to the classes that need it.
-    
+
 
     //submanagers
     [SerializeField]
@@ -13,89 +13,87 @@ public class GameplayManager : MonoBehaviour
     [SerializeField]
     InventoryManager InventoryManager;
     [SerializeField]
-    MinigameManager MinigameManager;
+    public ShopInfo ShopInfo;
 
-    int inventoryLocation;
-    bool gameToBeign;
-    bool gameToEnd;
-    int minigameID;
-
-    Vector3 OffsetVector;
-    [SerializeField]
-    float ProviderMinigameOffset; //amount to move leapserviceprovider object when games start or end, this results in the players hands being translated up and inward, making it easier to interact with the minigame and not the objects below
 
     private void Start()
     {
         InventoryManager.Init(); //setup inventory 
-        inventoryLocation = 0; //0 = left hand, 1 = right hand
-        OffsetVector = new Vector3(0,ProviderMinigameOffset,-ProviderMinigameOffset); //vector used on leapmotionprovider's transform.position
-        gameToBeign = false;
+        ShopInfo.PopulateLists();
     }
 
-    SelectedBehaviour target; 
     [SerializeField]
-    float selectionTime; //base selection timer length
+    float SelectionTime; //base selection timer length
     float timer; //variable used to track timer
+    [SerializeField]
+    bool LeftHandInventory = true;
 
-    private void FixedUpdate()
+    private void Update()
     {
-        HandManager.Tick();
-        Leap.Hand invHand = HandManager.GetHands()[inventoryLocation];
+        HandleHands();
+        HandleMinigames();
+        HandleShoppers();
+    }
+
+
+    void HandleHands()
+    {
+        Leap.Hand invHand = HandManager.GetHands()[LeftHandInventory ? 0 : 1];
         if (invHand != null)
         {
             InventoryManager.AttachToHand(invHand); //assign inventory to correct hand (must be done every frame as hands that leave and re-enter scene are not guaranteed to be the same in LeapSDK)
         }
+    }
 
-        if (!gameToBeign)
+
+    void HandleShoppers()
+    {
+        foreach(ShopperBehaviour s in ShopInfo.ActiveShoppers)
         {
-            //select minigame
-            GameObject g = HandManager.GetHandTarget(inventoryLocation == 1); //get the object we are pointing at (true = lefthand, false = righthand)
-            SelectedBehaviour temp = null;
-            if (g != null)
+            if (s.isPendingItemRequest)
             {
-                temp = g.GetComponent<SelectedBehaviour>(); //check if the object can be selected
+                s.RequestItem(ShopInfo.RemoveRandomItem()); //shopper requests a random item
+                s.isPendingItemRequest = false;
             }
+        }
+    }
 
-            if (temp != null)
+    Minigame ActiveMinigame = null;
+
+    void HandleMinigames()
+    {
+        if (ActiveMinigame == null)
+        {
+            //check if a minigame is selected
+            GameObject g = HandManager.GetHandTarget(!LeftHandInventory);
+            Minigame m;
+            if ((m = g.GetComponent<Minigame>()) != null)
             {
-                if (target != null && target.Equals(temp)) //if the object we are pointing at hasnt changed
-                {
-                    timer -= Time.deltaTime;
-                    if (timer <= 0)
-                    {
-                        //target has been pointed at long enugh to register a selection
-                        gameToBeign = true;
-                        timer = selectionTime;
-                        minigameID = target.GetGameID(); //get the associated minigame
-                    }
-                }
-                else //target has switched since last frame
-                {
-                    Debug.Log("target changed to " + temp + "from" + target);
-                    timer = selectionTime; //reset timer
-                    target = temp;
-                }
+                //load selected minigame
+                m.Load();
+                ActiveMinigame = m;
             }
-            else timer = selectionTime;
         }
-
-        if (gameToBeign)
+        else
         {
-            //begin minigame
-            MinigameManager.LoadMinigame(minigameID);
-            HandManager.AddOffset(OffsetVector);
-            gameToBeign = false;
-            gameToEnd = false;
+            if (ActiveMinigame.IsFinished)
+            {
+                //unload minigame
+                ActiveMinigame.Unload();
+                ActiveMinigame = null;
+            }
+            else
+            {
+                //update minigame
+                ActiveMinigame.Tick();
+            }
         }
+    }
 
-        if (gameToEnd)
-        {
-            //end minigame
-            MinigameManager.UnloadMinigame();
-            HandManager.AddOffset(-OffsetVector);
-            gameToBeign = false;
-            gameToEnd = false;
-        }
 
+    void SwapInventoryHand()
+    {
+        LeftHandInventory = !LeftHandInventory;
     }
 }
+

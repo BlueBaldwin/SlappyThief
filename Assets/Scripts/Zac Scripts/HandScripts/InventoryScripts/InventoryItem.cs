@@ -29,7 +29,7 @@ public class InventoryItem : MonoBehaviour
 
     void OnDetach()
     {
-        //scale objcet back up to world size, and show that the slot is now empty
+        //scale object back up to world size, and show that the slot is now empty
         gameObject.transform.localScale *= 1 / scaleFactor;
         ab.anchor.gameObject.GetComponent<MeshRenderer>().enabled = true;
     }

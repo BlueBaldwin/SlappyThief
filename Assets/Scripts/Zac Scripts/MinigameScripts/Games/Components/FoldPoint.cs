@@ -23,7 +23,7 @@ public class FoldPoint : MonoBehaviour
 
     bool pathStarted = false;
     bool? leftHand = null; //nullable bools are terrifying but is probably fine here, true = lefthand touched the original point, false = righthand did it, null = point hasnt had contact yet
-
+    public bool isFinished = false;
     Hand h; //tracks the hand that touched origin point, checked in linkedpoints endpath method to ensure we are mimicking the folding motion and not just pressing the beginning and end point at the same time with different hands
 
     void BeginPath()
