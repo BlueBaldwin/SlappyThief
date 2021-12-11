@@ -21,9 +21,10 @@ public class ShopperBehaviour : MonoBehaviour
     float MoodDelta;
     [SerializeField]
     Bounds PickupRange;
-  
 
-    
+
+    [SerializeField]
+    GameObject ShopperMovement;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class ShopperBehaviour : MonoBehaviour
 
     private void Update()
     {
+        PickupRange.center = ShopperMovement.transform.position;
         HandleItemRequests();
         if (RequestedItem != null)
         {

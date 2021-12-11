@@ -30,26 +30,54 @@ public class TillMinigame : Minigame
         base.Start();
         Debug.Log("TilStart");
         lr = gameObject.AddComponent<LineRenderer>();
-        lr.startWidth = 5;
+        lr.startWidth = 0.05f;
         lr.startColor = Color.red;
         ShopInfo = FindObjectOfType<GameplayManager>().ShopInfo;
         ClosedTill = TillTray.transform.position;
         OpenTill = TillTray.transform.position;
         OpenTill.y = 0;
+
     }
     public override void Load()
-    {     
-        lr.enabled = true;    
+    {
+        lr.enabled = true;
         base.Load();
     }
 
     public override void Tick()
     {
+        ShootRay();
         ScanItems();
         base.Tick();
     }
 
-    public void ScanItems()
+
+    private void ShootRay()
+    {
+        Vector3 RayStart = Scanner.position;
+        Vector3 dir = Vector3.up;
+        Ray ray = new Ray(RayStart, dir);
+        RaycastHit Hit;
+        float dist = 1000;
+        Vector3 RayEnd = RayStart + (dir * dist);
+        if (Physics.Raycast(ray, out Hit, dist))
+        {
+            ShopItem s;
+            if (Hit.collider != null)
+            {
+                RayEnd = Hit.point;
+                Debug.Log(Hit.collider.name);
+                if ((s = Hit.collider.gameObject.GetComponent<ShopItem>()) != null && CurrentShopper.ShopperCart.Contains(s))
+                {
+                    CurrentShopper.ShopperCart.Remove(s);                   
+                }
+            }        
+        }
+        lr.SetPosition(0, RayStart);
+        lr.SetPosition(1, RayEnd);
+    }
+
+    private void ScanItems()
     {
         if (CurrentShopper == null)
         {
@@ -67,8 +95,7 @@ public class TillMinigame : Minigame
             }
             else
             {
-                //we have finished the queue
-                lr.enabled = false;
+                //lr.enabled = false;
                 TillTray.transform.position = ClosedTill;
             }
         }
@@ -84,10 +111,10 @@ public class TillMinigame : Minigame
                     Bounds bounds = TillTray.GetComponent<BoxCollider>().bounds;
                     Coins = new List<GameObject>();
                     if (!CoinsSpawned)
-                    {                    
+                    {
                         for (int i = 0; i < Random.Range(0, 5); ++i)
                         {
-                            GameObject g = Instantiate(Coin,Scanner.position + ItemOffset*i,Scanner.rotation);
+                            GameObject g = Instantiate(Coin, Scanner.position + ItemOffset * i, Scanner.rotation);
                             Coins.Add(g);
                             SpawnedObjects.Add(g);
                         }
@@ -95,11 +122,11 @@ public class TillMinigame : Minigame
                     }
                     else
                     {
-                       
-                        foreach(GameObject Coin in Coins)
+
+                        foreach (GameObject Coin in Coins)
                         {
                             if (bounds.Contains(Coin.transform.position))
-                            {                             
+                            {
                                 Coins.Remove(Coin);
                             }
                         }
@@ -110,31 +137,6 @@ public class TillMinigame : Minigame
                 {
                     //go to next shopper in queue TODO: give shopper waypoint to exit?
                     CurrentShopper = null;
-                }
-            }
-            else
-            {
-                Vector3 RayStart = Scanner.position;
-                Vector3 dir = Vector3.up;
-                Ray ray = new Ray(RayStart, dir);
-                RaycastHit Hit = new RaycastHit();
-                float dist = 1000;
-                Vector3 RayEnd;
-                if (Physics.Raycast(ray, out Hit, dist))
-                {
-                    ShopItem s;
-                    if ((s = Hit.collider.gameObject.GetComponent<ShopItem>()) != null)
-                    {
-                        CurrentShopper.ShopperCart.Remove(s);
-                        RayEnd = Hit.point;
-                    }
-                    else
-                    {
-                        RayEnd = RayStart + (dist * dir);
-                    }
-
-                    lr.SetPosition(0, RayStart);
-                    lr.SetPosition(1, RayEnd);
                 }
             }
         }
