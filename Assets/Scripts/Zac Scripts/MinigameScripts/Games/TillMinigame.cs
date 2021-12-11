@@ -21,13 +21,15 @@ public class TillMinigame : Minigame
 
     Vector3 ClosedTill;
     Vector3 OpenTill;
-    bool CompletedQueue;
+
     bool TakenMoney;
     bool CoinsSpawned;
 
-    private void Start()
+    public override void Start()
     {
-        lr = GetComponent<LineRenderer>();
+        base.Start();
+        Debug.Log("TilStart");
+        lr = gameObject.AddComponent<LineRenderer>();
         lr.startWidth = 5;
         lr.startColor = Color.red;
         ShopInfo = FindObjectOfType<GameplayManager>().ShopInfo;
@@ -36,9 +38,8 @@ public class TillMinigame : Minigame
         OpenTill.y = 0;
     }
     public override void Load()
-    {
-        CompletedQueue = false;     
-        lr.enabled = true;        
+    {     
+        lr.enabled = true;    
         base.Load();
     }
 
@@ -67,8 +68,8 @@ public class TillMinigame : Minigame
             else
             {
                 //we have finished the queue
-                CompletedQueue = true;
                 lr.enabled = false;
+                TillTray.transform.position = ClosedTill;
             }
         }
         else
@@ -86,9 +87,9 @@ public class TillMinigame : Minigame
                     {                    
                         for (int i = 0; i < Random.Range(0, 5); ++i)
                         {
-                            GameObject g = Instantiate(Coin, Scanner.transform);
-                            g.transform.localPosition += Vector3.up * i;
+                            GameObject g = Instantiate(Coin,Scanner.position + ItemOffset*i,Scanner.rotation);
                             Coins.Add(g);
+                            SpawnedObjects.Add(g);
                         }
                         CoinsSpawned = true;
                     }
@@ -98,7 +99,7 @@ public class TillMinigame : Minigame
                         foreach(GameObject Coin in Coins)
                         {
                             if (bounds.Contains(Coin.transform.position))
-                            {
+                            {                             
                                 Coins.Remove(Coin);
                             }
                         }

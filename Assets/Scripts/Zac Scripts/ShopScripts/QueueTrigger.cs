@@ -9,14 +9,19 @@ public class QueueTrigger : MonoBehaviour
     private void Start()
     {
         ShopInfo = FindObjectOfType<GameplayManager>().ShopInfo;
+        Trigger = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        ShopperBehaviour s; 
-        if((s = gameObject.GetComponent<ShopperBehaviour>()) != null)
+        ShopperBehaviour s;
+
+        if((s = other.gameObject.GetComponentInParent<ShopperBehaviour>()) != null)
         {
-            ShopInfo.EnqueueShopper(s);
+            if (!s.isInQueue)
+            {
+                ShopInfo.EnqueueShopper(s);
+            }
         }
     }
 

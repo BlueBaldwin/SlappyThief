@@ -12,8 +12,16 @@ public class ShopInfo : MonoBehaviour
 
     public void EnqueueShopper(ShopperBehaviour s)
     {
-        QueuedShoppers.Enqueue(s);
-        s.isInQueue = true;
+        if (s.ShopperCart.Count != 0)
+        {
+            QueuedShoppers.Enqueue(s);
+            s.isInQueue = true;
+            Debug.Log(s.name + "queued");
+        } 
+        else
+        {
+            Debug.Log(s.name + "is trying to queue but has an empty cart");
+        }
     }
 
     public ShopperBehaviour DequeueShopper()
@@ -29,6 +37,7 @@ public class ShopInfo : MonoBehaviour
     {
         if (!init)
         {
+
             PopulateLists();
             init = true;
         }
@@ -52,6 +61,7 @@ public class ShopInfo : MonoBehaviour
     {
         AvailableItems = new List<ShopItem>(FindObjectsOfType<ShopItem>());
         ActiveShoppers = new List<ShopperBehaviour>(FindObjectsOfType<ShopperBehaviour>());
+        QueuedShoppers = new Queue<ShopperBehaviour>();
     }
 
     public ShopItem RemoveRandomItem()
@@ -59,6 +69,11 @@ public class ShopInfo : MonoBehaviour
         ShopItem s = AvailableItems[Random.Range(0,AvailableItems.Count)];
         RemoveShopItem(s);
         return s;
+    }
+
+    public int ItemsAvailableCount()
+    {
+        return AvailableItems.Count;
     }
 
 

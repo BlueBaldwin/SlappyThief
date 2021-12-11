@@ -23,9 +23,6 @@ public class GameplayManager : MonoBehaviour
     }
 
     [SerializeField]
-    float SelectionTime; //base selection timer length
-    float timer; //variable used to track timer
-    [SerializeField]
     bool LeftHandInventory = true;
 
     private void Update()
@@ -50,7 +47,7 @@ public class GameplayManager : MonoBehaviour
     {
         foreach(ShopperBehaviour s in ShopInfo.ActiveShoppers)
         {
-            if (s.isPendingItemRequest)
+            if (s.isPendingItemRequest && ShopInfo.ItemsAvailableCount() > 0)
             {
                 s.RequestItem(ShopInfo.RemoveRandomItem()); //shopper requests a random item
                 s.isPendingItemRequest = false;
@@ -66,12 +63,15 @@ public class GameplayManager : MonoBehaviour
         {
             //check if a minigame is selected
             GameObject g = HandManager.GetHandTarget(!LeftHandInventory);
-            Minigame m;
-            if ((m = g.GetComponent<Minigame>()) != null)
+            if (g != null)
             {
-                //load selected minigame
-                m.Load();
-                ActiveMinigame = m;
+                Minigame m;
+                if ((m = g.GetComponentInParent<Minigame>()) != null)
+                {
+                    //load selected minigame
+                    m.Load();
+                    ActiveMinigame = m;
+                }
             }
         }
         else

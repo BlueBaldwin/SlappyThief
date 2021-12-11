@@ -5,5 +5,5 @@ using UnityEngine;
 public class ShopItem : MonoBehaviour
 {
     [SerializeField]
-    Sprite PreviewSprite;
+    Sprite PreviewSprite; //need a sprite for speech/thought bubble?
 }

@@ -39,7 +39,10 @@ public class ShopperBehaviour : MonoBehaviour
     private void Update()
     {
         HandleItemRequests();
-        HandlePickup();
+        if (RequestedItem != null)
+        {
+            HandlePickup();
+        }
     }
 
     void HandlePickup()
@@ -47,6 +50,8 @@ public class ShopperBehaviour : MonoBehaviour
         if (PickupRange.Contains(RequestedItem.gameObject.transform.position))
         {
             ShopperCart.Add(RequestedItem);
+            Debug.Log(name + " recieved " + RequestedItem.name);
+            RequestedItem = null;
         }
     }
 
@@ -71,24 +76,13 @@ public class ShopperBehaviour : MonoBehaviour
     public void RequestItem(ShopItem s)
     {
         RequestedItem = s;
-    }
-
-    public void RecieveItemFromPlayer(ShopItem s)
-    {
-        if(RequestedItem == s)
-        {
-            ShopperCart.Add(s);
-            Mood += MoodDelta;
-        }
-        else
-        {
-            Mood -= MoodDelta;
-        }
+        Debug.Log(name + " requesting " + s.name);
     }
 
     public void PickupRequestedItem()
     {
        ShopperCart.Add(RequestedItem);
+        RequestedItem = null;
     }
 
 

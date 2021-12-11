@@ -10,24 +10,35 @@ public abstract class Minigame : MonoBehaviour
     [SerializeField]
     Camera MinigameCamera;
     public bool IsFinished;
+    [SerializeField]
+    GameObject LeapServiceProvider;
+    [SerializeField]
+    float MinigameHandScale;
+    Transform LeapParent;
+    Vector3 LeapPos;
 
-    private void Start()
-    { 
-        MinigameCamera = gameObject.GetComponent<Camera>();
-        if(MinigameCamera == null)
-        {
-            MinigameCamera = gameObject.AddComponent<Camera>();
-            MinigameCamera.transform.localPosition = Camera.main.transform.localPosition;
-            MinigameCamera.transform.localRotation = Camera.main.transform.localRotation;
-        }
+    [SerializeField]
+    Vector3 MinigameHandsOffset;
+    Camera MainCamera;
+
+    public virtual void Start()
+    {
         MinigameCamera.enabled = false;
         IsFinished = false;
+        LeapParent = LeapServiceProvider.transform.parent;
+        MainCamera = Camera.main;
+        LeapPos = LeapServiceProvider.transform.position;
     }
+
+    
 
     public virtual void Load()
     {
+        LeapServiceProvider.transform.SetParent(MinigameCamera.transform, false);
+        LeapServiceProvider.transform.localPosition = MinigameHandsOffset;
+        LeapServiceProvider.transform.localScale *= MinigameHandScale;
         MinigameCamera.enabled = true;
-        Camera.main.enabled = false;
+        MainCamera.enabled = false;
         IsFinished = false;
         //call base.Load() when overriding this in custom minigame
     }
@@ -38,13 +49,16 @@ public abstract class Minigame : MonoBehaviour
 
     public void Unload() //same defenition for each minigame object so it can be defined once here
     {
+        LeapServiceProvider.transform.SetParent(LeapParent, false);
+        LeapServiceProvider.transform.localPosition = LeapPos;
+        LeapServiceProvider.transform.localScale /= MinigameHandScale;
         foreach (GameObject g in SpawnedObjects)
         {
             Destroy(g); //destroy all objects that were spawned for the minigame
         }
         SpawnedObjects.Clear();
         MinigameCamera.enabled = false;
-        Camera.main.enabled = true;
+        MainCamera.enabled = true;
     }
 }
 
