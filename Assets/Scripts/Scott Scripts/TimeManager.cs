@@ -12,10 +12,12 @@ public class TimeManager : MonoBehaviour
     public static int Minute { get; private set;}
     public static int Hour { get; private set;}
 
-    private float minuteToRealTime = 0.5f;
-    private float timer;
+    private float minuteToRealTime = 0.1f;
+    private float time;
+    private bool shiftOver = false;
 
-    void Start()
+
+    void Awake()
     {
         // Setting the start in game 'Work Time' 
         Hour = 9;
@@ -24,20 +26,27 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
+        timer();
+    }
 
-        timer -= Time.deltaTime;
-        // Creating the in game clock
-        if (timer <= 0)
-        {
-            Minute++;
-            // If not null then invoke it (Action)
-            OnMinuteChanged?.Invoke();
-            if (Minute >= 60)
-            {
-                Hour++;
-                Minute = 0;
-            }
-            timer = minuteToRealTime;
-        }
+    void timer()
+    {
+        // while (!shiftOver)
+        // {
+        //     time -= Time.deltaTime;
+        //     // Creating the in game clock
+        //     if (time <= 0)
+        //     {
+        //         Minute++;
+        //         // If not null then invoke it (Action)
+        //         OnMinuteChanged?.Invoke();
+        //         if (Minute >= 60)
+        //         {
+        //             Hour++;
+        //             Minute = 0;
+        //         }
+        //         time = minuteToRealTime;
+        //     }
+        // }
     }
 }
