@@ -26,27 +26,19 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        timer();
-    }
-
-    void timer()
-    {
-        // while (!shiftOver)
-        // {
-        //     time -= Time.deltaTime;
-        //     // Creating the in game clock
-        //     if (time <= 0)
-        //     {
-        //         Minute++;
-        //         // If not null then invoke it (Action)
-        //         OnMinuteChanged?.Invoke();
-        //         if (Minute >= 60)
-        //         {
-        //             Hour++;
-        //             Minute = 0;
-        //         }
-        //         time = minuteToRealTime;
-        //     }
-        // }
+        time -= Time.deltaTime;
+        // Creating the in game clock
+        if (time <= 0)
+        {
+            Minute++;
+            // If not null then invoke it (Action)
+            OnMinuteChanged?.Invoke();
+            if (Minute >= 60)
+            {
+                Hour++;
+                Minute = 0;
+            }
+            time = minuteToRealTime;
+        }
     }
 }
