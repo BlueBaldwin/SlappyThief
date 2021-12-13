@@ -9,49 +9,51 @@ public abstract class Minigame : MonoBehaviour
     public List<GameObject> SpawnedObjects; //add to this list when spawning objects for minigame
     [SerializeField]
     Camera MinigameCamera;
+    [SerializeField]
+    HandProcessor HandProcessor;
+    [SerializeField]
+    float HandSizeScalar;
+    Vector3 MinigameMovementScalar;
+    [SerializeField]
+    Vector3 Offset;
+    Leap.LeapTransform MinigameTransform;
     public bool IsFinished;
-    [SerializeField]
-    GameObject LeapServiceProvider;
-    [SerializeField]
-    float MinigameHandScale;
-    Transform LeapParent;
-    Vector3 LeapPos;
 
-    [SerializeField]
-    Vector3 MinigameHandsOffset;
+
     Camera MainCamera;
 
     public virtual void Start()
     {
         MinigameCamera.enabled = false;
         IsFinished = false;
-        LeapParent = LeapServiceProvider.transform.parent;
         MainCamera = Camera.main;
-        LeapPos = LeapServiceProvider.transform.position;
+        MinigameTransform = LeapUnityUtils.UnityTransformToLeapTransform(MinigameCamera.transform);
+        MinigameTransform.translation += LeapUnityUtils.UnityV3ToLeapV3(Offset);
+        MinigameMovementScalar = Vector3.one*HandSizeScalar;
     }
 
     
 
     public virtual void Load()
     {
-        LeapServiceProvider.transform.SetParent(MinigameCamera.transform, false);
-        LeapServiceProvider.transform.localPosition = MinigameHandsOffset;
-        LeapServiceProvider.transform.localScale *= MinigameHandScale;
         MinigameCamera.enabled = true;
         MainCamera.enabled = false;
         IsFinished = false;
+        HandProcessor.SetHandPositionScalar(MinigameMovementScalar);
+        HandProcessor.SetTransform(MinigameTransform);
+        HandProcessor.SetScale(HandSizeScalar);
+
         //call base.Load() when overriding this in custom minigame
     }
     public virtual void Tick()
     {
+        MinigameTransform = LeapUnityUtils.UnityTransformToLeapTransform(MinigameCamera.transform);
+        MinigameTransform.translation += LeapUnityUtils.UnityV3ToLeapV3(Offset);
         if (IsFinished) Unload();
     }
 
-    public void Unload() //same defenition for each minigame object so it can be defined once here
+    public void Unload() //same definition for each minigame object so it can be defined once here
     {
-        LeapServiceProvider.transform.SetParent(LeapParent, false);
-        LeapServiceProvider.transform.localPosition = LeapPos;
-        LeapServiceProvider.transform.localScale /= MinigameHandScale;
         foreach (GameObject g in SpawnedObjects)
         {
             Destroy(g); //destroy all objects that were spawned for the minigame
@@ -59,6 +61,9 @@ public abstract class Minigame : MonoBehaviour
         SpawnedObjects.Clear();
         MinigameCamera.enabled = false;
         MainCamera.enabled = true;
+        HandProcessor.ResetHandPositionScalar();
+        HandProcessor.ResetTransform();
+        HandProcessor.ResetScale();
     }
 }
 

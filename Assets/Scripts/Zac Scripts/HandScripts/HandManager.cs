@@ -17,24 +17,27 @@ public class HandManager : MonoBehaviour
     Hand Left;
     [SerializeField]
     Hand Right;
+    Frame frame;
 
+    GameObject LTarget;
+    GameObject RTarget;
 
-    Frame f;
+    [SerializeField]
+     public HandProcessor HandProcessor;
 
-    // Start is called before the first frame update
 
     public void Update()
     {
-        Left = null;
-        Right = null;
-        f = Provider.CurrentFixedFrame; //update current frame
+        frame = Provider.CurrentFrame;
+        HandProcessor.ProcessFrame(ref frame); //process frame through custom provider that is used by the InteractionManager and HandModelManager
         AssignHands(); //assign left/right hands, this must be done every frame as hands that leave/reenter the scene are not considered the same hand object in Leap
+        UpdateTargets();
     }
 
     void AssignHands()
     {
         //check if hand is left or right and assign appropriately (this will work as long as there are not more than 2 hands in the scene).
-        foreach (Hand h in f.Hands)
+        foreach (Hand h in frame.Hands)
         {
             if (h.IsLeft) Left = h; 
             else if (h.IsRight) Right = h;
@@ -52,34 +55,33 @@ public class HandManager : MonoBehaviour
         Provider.gameObject.transform.position += v;
     }
 
-    public GameObject GetHandTarget(bool b)
-    {
-        Hand current = null;
-        //assign current hand depending on input bool
-        foreach(Hand h in f.Hands)
-        {
-            if(h.IsLeft == b)
-            {
-                current = h;
-                break;
-            }
-        }
 
-        if (current != null)
-        {
+    public GameObject GetHandTarget(bool left)
+    {   
+        if (left) return LTarget;
+        else return RTarget;
+    }
+
+    void UpdateTargets()
+    {
+        foreach (Hand current in frame.Hands)
+        {        
             Finger index = current.GetIndex();
             if (index != null)
             {
                 //fire out ray to find out what we are pointing at with index finger
                 Ray ray = new Ray(LeapUnityUtils.LeapV3ToUnityV3(index.TipPosition), LeapUnityUtils.LeapV3ToUnityV3(index.Direction));
-                RaycastHit hit = new RaycastHit();
+                RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 1000))
                 {
-                    return hit.collider.gameObject; //return object we are pointing at 
+                     GameObject result = hit.collider.gameObject; //return object we are pointing at 
+                    if (current.IsLeft) LTarget = result;
+                    else RTarget = result;
                 }
+               
             }
+            
         }
-        return null;
     }
 
 }

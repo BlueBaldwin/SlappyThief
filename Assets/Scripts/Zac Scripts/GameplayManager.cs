@@ -11,14 +11,14 @@ public class GameplayManager : MonoBehaviour
     [SerializeField]
     HandManager HandManager;
     [SerializeField]
-    InventoryManager InventoryManager;
+    InventoryManager InvManager;
     [SerializeField]
     public ShopInfo ShopInfo;
 
 
     private void Start()
     {
-        InventoryManager.Init(); //setup inventory 
+        InvManager.Init(); //setup inventory 
         ShopInfo.PopulateLists();
     }
 
@@ -27,18 +27,27 @@ public class GameplayManager : MonoBehaviour
 
     private void Update()
     {
-        HandleHands();
         HandleMinigames();
+        HandleInventoryAttachment();
         HandleShoppers();
     }
 
 
-    void HandleHands()
+    void HandleInventoryAttachment()
     {
-        Leap.Hand invHand = HandManager.GetHands()[LeftHandInventory ? 0 : 1];
-        if (invHand != null)
+        if (ActiveMinigame == null)
         {
-            InventoryManager.AttachToHand(invHand); //assign inventory to correct hand (must be done every frame as hands that leave and re-enter scene are not guaranteed to be the same in LeapSDK)
+            InvManager.gameObject.SetActive(true);
+            Leap.Hand invHand = HandManager.GetHands()[LeftHandInventory ? 0 : 1];
+            if (invHand != null)
+            {
+                InvManager.AttachToHand(invHand); //assign inventory to correct hand (must be done every frame as hands that leave and re-enter scene are not guaranteed to be the same in LeapSDK)
+            }
+        }
+        else
+        {
+            //turn off inventory when in a game as it isnt needed
+            InvManager.gameObject.SetActive(false);
         }
     }
 
