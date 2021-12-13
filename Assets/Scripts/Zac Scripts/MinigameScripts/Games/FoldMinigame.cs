@@ -12,7 +12,10 @@ public class FoldMinigame : Minigame
     GameObject FoldPoint;
 
     [SerializeField]
-    Vector3 Offsets; //used to spawn foldpoints at the correct locations on the shirt, currently only configured for PLACEHOLDERSHIRT prefab.
+    Vector3 FoldPointOffsets; //used to spawn foldpoints at the correct locations on the shirt, currently only configured for PLACEHOLDERSHIRT prefab.
+
+    [SerializeField]
+    Vector3 ClothingOffset;
 
     List<GameObject> RemainingPoints = new List<GameObject>();
 
@@ -24,13 +27,14 @@ public class FoldMinigame : Minigame
         GameObject temp;
         GameObject g = Instantiate(FoldPoint, gameObject.transform);
         g.GetComponent<MeshRenderer>().material.color = c;
-        g.transform.localPosition = A;
+        g.transform.localPosition = A + ClothingOffset/4;
+        g.SetActive(true);
         RemainingPoints.Add(g);
         temp = g;
 
         g = Instantiate(FoldPoint, gameObject.transform);
         g.GetComponent<MeshRenderer>().material.color = c;
-        g.transform.localPosition = B;
+        g.transform.localPosition = B + ClothingOffset/4;
         temp.GetComponent<FoldPoint>().LinkedPoint = g.transform;
 
         SpawnedObjects.Add(g);
@@ -40,25 +44,33 @@ public class FoldMinigame : Minigame
     public override void Load()
     {
         base.Load();
+        GameObject g = Instantiate(Shirt, gameObject.transform);
+        SpawnedObjects.Add(g);
+        g.transform.position += ClothingOffset;
+
         //Spawns 3 sets of 2 color coded linked foldpoints, see Foldpoint.cs 
-        SpawnedObjects.Add(Instantiate(Shirt, gameObject.transform));
-        CreateFoldPointPair(new Vector3(-Offsets.x, Offsets.y, 0), new Vector3(-Offsets.x / 2, Offsets.y, Offsets.z));
-        CreateFoldPointPair(new Vector3(Offsets.x, Offsets.y, 0), new Vector3(Offsets.x / 2, Offsets.y, Offsets.z));
-        CreateFoldPointPair(new Vector3(0, Offsets.y, -Offsets.z), new Vector3(0, Offsets.y, Offsets.z));
+        CreateFoldPointPair(new Vector3(-FoldPointOffsets.x, FoldPointOffsets.y, 0), new Vector3(-FoldPointOffsets.x * 0.5f, FoldPointOffsets.y, FoldPointOffsets.z));
+        CreateFoldPointPair(new Vector3(FoldPointOffsets.x, FoldPointOffsets.y, 0), new Vector3(FoldPointOffsets.x * 0.5f, FoldPointOffsets.y, FoldPointOffsets.z));
+        CreateFoldPointPair(new Vector3(0, FoldPointOffsets.y, -FoldPointOffsets.z), new Vector3(0, FoldPointOffsets.y, FoldPointOffsets.z * 0.75f));
     }
 
     public override void Tick()
     {
-        IsFinished = true;
-        foreach (GameObject g in RemainingPoints)
+        if (IsLoaded)
         {
-            if (g.activeSelf)
+            IsFinished = true;
+            foreach (GameObject g in RemainingPoints)
             {
-                IsFinished = false;
-                break;
+                if (g != null)
+                {
+                    if (g.activeSelf)
+                    {
+                        IsFinished = false;
+                        break;
+                    }
+                }
             }
         }
-        base.Tick();
     }
 }
 

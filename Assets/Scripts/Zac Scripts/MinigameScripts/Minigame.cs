@@ -15,9 +15,10 @@ public abstract class Minigame : MonoBehaviour
     float HandSizeScalar;
     Vector3 MinigameMovementScalar;
     [SerializeField]
-    Vector3 Offset;
+    Vector3 LeapOffset;
     Leap.LeapTransform MinigameTransform;
     public bool IsFinished;
+    public bool IsLoaded;
 
 
     Camera MainCamera;
@@ -28,7 +29,7 @@ public abstract class Minigame : MonoBehaviour
         IsFinished = false;
         MainCamera = Camera.main;
         MinigameTransform = LeapUnityUtils.UnityTransformToLeapTransform(MinigameCamera.transform);
-        MinigameTransform.translation += LeapUnityUtils.UnityV3ToLeapV3(Offset);
+        MinigameTransform.translation += LeapUnityUtils.UnityV3ToLeapV3(LeapOffset);
         MinigameMovementScalar = Vector3.one*HandSizeScalar;
     }
 
@@ -36,21 +37,20 @@ public abstract class Minigame : MonoBehaviour
 
     public virtual void Load()
     {
+        HandProcessor.inputLeapProvider.gameObject.SetActive(false);
         MinigameCamera.enabled = true;
         MainCamera.enabled = false;
         IsFinished = false;
         HandProcessor.SetHandPositionScalar(MinigameMovementScalar);
         HandProcessor.SetTransform(MinigameTransform);
         HandProcessor.SetScale(HandSizeScalar);
+        HandProcessor.inputLeapProvider.gameObject.SetActive(true);
+        IsLoaded = true;
 
         //call base.Load() when overriding this in custom minigame
     }
-    public virtual void Tick()
-    {
-        MinigameTransform = LeapUnityUtils.UnityTransformToLeapTransform(MinigameCamera.transform);
-        MinigameTransform.translation += LeapUnityUtils.UnityV3ToLeapV3(Offset);
-        if (IsFinished) Unload();
-    }
+    public abstract void Tick();
+
 
     public void Unload() //same definition for each minigame object so it can be defined once here
     {
@@ -64,6 +64,7 @@ public abstract class Minigame : MonoBehaviour
         HandProcessor.ResetHandPositionScalar();
         HandProcessor.ResetTransform();
         HandProcessor.ResetScale();
+        IsLoaded = false;
     }
 }
 
