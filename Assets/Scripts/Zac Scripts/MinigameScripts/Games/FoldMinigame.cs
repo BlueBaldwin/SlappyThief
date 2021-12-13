@@ -20,6 +20,12 @@ public class FoldMinigame : Minigame
     List<GameObject> RemainingPoints = new List<GameObject>();
 
 
+    public override bool CheckStartConditions()
+    {
+        return false;
+        //return "are the clothes here messy" 
+    }
+
     //if the shirts we end up using are consistent in size this is fine, if not I can make offsets dynamically change based on the given shirt
     public void CreateFoldPointPair(Vector3 A, Vector3 B)
     {

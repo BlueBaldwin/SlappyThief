@@ -77,9 +77,12 @@ public class GameplayManager : MonoBehaviour
                 Minigame m;
                 if ((m = g.GetComponentInParent<Minigame>()) != null)
                 {
-                    //load selected minigame
-                    m.Load();
-                    ActiveMinigame = m;
+                    if (m.CheckStartConditions() == true)
+                    {
+                        //load selected minigame
+                        m.Load();
+                        ActiveMinigame = m;
+                    }
                 }
             }
         }

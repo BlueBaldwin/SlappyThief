@@ -10,6 +10,11 @@ public class ShopInfo : MonoBehaviour
     private Queue<ShopperBehaviour> QueuedShoppers;
     bool init = false;
 
+
+    public int QueueLength()
+    {
+        return QueuedShoppers.Count;
+    }
     public void EnqueueShopper(ShopperBehaviour s)
     {
         if (s.ShopperCart.Count != 0)
@@ -60,8 +65,11 @@ public class ShopInfo : MonoBehaviour
     public void PopulateLists()
     {
         AvailableItems = new List<ShopItem>(FindObjectsOfType<ShopItem>());
+        if (AvailableItems.Count == 0) Debug.LogError("Can't find any shopitems!");
         ActiveShoppers = new List<ShopperBehaviour>(FindObjectsOfType<ShopperBehaviour>());
         QueuedShoppers = new Queue<ShopperBehaviour>();
+
+        
     }
 
     public ShopItem RemoveRandomItem()

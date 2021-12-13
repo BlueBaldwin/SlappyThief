@@ -38,6 +38,12 @@ public class TillMinigame : Minigame
         OpenTill.y = 0;
 
     }
+
+    public override bool CheckStartConditions()
+    {
+        return ShopInfo.QueueLength() > 0;
+    }
+
     public override void Load()
     {
         lr.enabled = true;

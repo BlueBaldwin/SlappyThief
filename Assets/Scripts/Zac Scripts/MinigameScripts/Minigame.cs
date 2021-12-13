@@ -31,9 +31,7 @@ public abstract class Minigame : MonoBehaviour
         MinigameTransform = LeapUnityUtils.UnityTransformToLeapTransform(MinigameCamera.transform);
         MinigameTransform.translation += LeapUnityUtils.UnityV3ToLeapV3(LeapOffset);
         MinigameMovementScalar = Vector3.one*HandSizeScalar;
-    }
-
-    
+    } 
 
     public virtual void Load()
     {
@@ -49,6 +47,8 @@ public abstract class Minigame : MonoBehaviour
 
         //call base.Load() when overriding this in custom minigame
     }
+
+    public abstract bool CheckStartConditions();
     public abstract void Tick();
 
 
