@@ -25,10 +25,16 @@ public class QueueTrigger : MonoBehaviour
         }
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-        //Queue has no direct remove method. Do we want shoppers to be able to walk out of the queue or not?
-   // }
-
+    private void OnTriggerExit(Collider other)
+    {
+        ShopperBehaviour s;
+        if ((s = other.gameObject.GetComponentInParent<ShopperBehaviour>()) != null)
+        {
+            if (s.isInQueue)
+            {
+                ShopInfo.DequeueShopper(s);
+            }
+        }
+    }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Leap.Unity.Interaction;
 
 public class ShopperBehaviour : MonoBehaviour
 {
@@ -26,6 +27,14 @@ public class ShopperBehaviour : MonoBehaviour
     [SerializeField]
     GameObject ShopperMovement;
 
+    [SerializeField]
+    float SlapVelocity;
+
+    [SerializeField]
+    Vector3 CartItemOffset;
+
+    InteractionBehaviour ib;
+
     private void Start()
     {
         ShopperCart = new List<ShopItem>();
@@ -35,6 +44,35 @@ public class ShopperBehaviour : MonoBehaviour
         Mood = BaseMood;
         TargetItems = Random.Range(1, MaxCartSize);
         isInQueue = false;
+        ib = GetComponent<InteractionBehaviour>();
+        ib.OnContactBegin += OnSlap;
+        ib.OnGraspStay += OnShake;
+        
+    }
+    void OnSlap()
+    {
+        if(ib.closestHoveringController.velocity.magnitude > SlapVelocity)
+        {
+            DropRandomItem();
+        }
+    }
+
+    void OnShake()
+    {
+        if(ib.graspingController.velocity.magnitude > SlapVelocity)
+        {
+            DropRandomItem();
+        }
+    }
+
+
+    void DropRandomItem()
+    {
+        if (ShopperCart.Count > 0)
+        {
+            ShopperCart.RemoveAt(Random.Range(0, ShopperCart.Count));
+            Debug.Log(name + " Dropped an item!");
+        }
     }
 
     private void Update()
@@ -45,7 +83,18 @@ public class ShopperBehaviour : MonoBehaviour
         {
             HandlePickup();
         }
+        RenderCart();
+
     }
+
+    void RenderCart()
+    {
+        for (int i = 0; i < ShopperCart.Count; ++i)
+        {
+            ShopperCart[i].gameObject.transform.position = transform.position + ((i + 1) * CartItemOffset);
+        }
+    }
+
 
     void HandlePickup()
     {

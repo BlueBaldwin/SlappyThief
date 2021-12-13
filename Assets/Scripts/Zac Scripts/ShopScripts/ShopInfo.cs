@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ShopInfo : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ShopInfo : MonoBehaviour
     {
         return QueuedShoppers.Count;
     }
+
     public void EnqueueShopper(ShopperBehaviour s)
     {
         if (s.ShopperCart.Count != 0)
@@ -36,6 +38,13 @@ public class ShopInfo : MonoBehaviour
             return QueuedShoppers.Dequeue();
         }
         return null;
+    }
+
+    public void DequeueShopper(ShopperBehaviour s)
+    {
+        //Queue does not have a remove method, so we have to replace the list with a version of the list that doesnt include the item we want to remove. Which sounds dumb and bad but whatever.
+        QueuedShoppers = (Queue<ShopperBehaviour>)QueuedShoppers.Where(x  => x!!= s);
+        Debug.Log("Removed " + s.name + "from queue");
     }
 
     public void Init()
