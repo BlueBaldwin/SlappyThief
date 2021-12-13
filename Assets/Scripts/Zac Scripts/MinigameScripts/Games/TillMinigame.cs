@@ -48,7 +48,6 @@ public class TillMinigame : Minigame
     {
         ShootRay();
         ScanItems();
-        base.Tick();
     }
 
 
