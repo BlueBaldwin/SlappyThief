@@ -35,11 +35,9 @@ public class ShopperBehaviour : MonoBehaviour
 
     InteractionBehaviour ib;
 
-
     [SerializeField]
     float BaseShakeTimer;
     float ShakeTimer;
-
     private void Start()
     {
         ShopperCart = new List<ShopItem>();
@@ -52,16 +50,9 @@ public class ShopperBehaviour : MonoBehaviour
         ib = GetComponent<InteractionBehaviour>();
         ib.OnContactBegin += OnSlap;
         ib.OnGraspStay += OnShake;
-        ib.OnGraspBegin += ResetShakeTimer;
-        
-        
-    }
-
-    void ResetShakeTimer()
-    {
         ShakeTimer = BaseShakeTimer;
+        
     }
-
     void OnSlap()
     {
         if(ib.closestHoveringController.velocity.magnitude > SlapVelocity)
@@ -75,7 +66,7 @@ public class ShopperBehaviour : MonoBehaviour
         if(ib.graspingController.velocity.magnitude > SlapVelocity && ShakeTimer < 0)
         {
             DropRandomItem();
-            ResetShakeTimer();
+            ShakeTimer = BaseShakeTimer;
         }
         else
         {
