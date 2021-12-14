@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/02_Tutorial.unity
     guid: 6bfc216935808204c9f5779e34e15c40
   - enabled: 1
-    path: Assets/Scenes/TEST Scenes/Kelsie_Test/03_Gameplay.unity
+    path: Assets/Scenes/03_Gameplay.unity
     guid: e41a9ba2db506d94a9f770524ca8a5d7
   m_configObjects: {}
