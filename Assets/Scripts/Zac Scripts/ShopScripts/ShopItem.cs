@@ -8,6 +8,9 @@ public class ShopItem : MonoBehaviour
     [SerializeField]
     public Sprite PreviewSprite; //need a sprite for speech/thought bubble?
 
+    [SerializeField]
+    public ShopItemTypes.SHOPITEMTYPE ShopItemType;
+
     private void Start()
     {
         //ensure we can interact with shop items 

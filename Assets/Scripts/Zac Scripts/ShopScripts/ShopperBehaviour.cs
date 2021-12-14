@@ -8,7 +8,7 @@ public class ShopperBehaviour : MonoBehaviour
     public List<ShopItem> ShopperCart;
     [SerializeField]
     float BaseMood;
-    ShopItem RequestedItem;
+    ShopItemTypes.SHOPITEMTYPE RequestedItemType;
     float Mood;
     [SerializeField]
     float BaseRequestTime;
@@ -21,7 +21,8 @@ public class ShopperBehaviour : MonoBehaviour
     [SerializeField]
     float MoodDelta;
     [SerializeField]
-    Bounds PickupRange;
+    BoxCollider PickupRange;
+    ShopInfo ShopInfo;
 
 
     [SerializeField]
@@ -88,10 +89,6 @@ public class ShopperBehaviour : MonoBehaviour
     {
         PickupRange.center = ShopperMovement.transform.position;
         HandleItemRequests();
-        if (RequestedItem != null)
-        {
-            HandlePickup();
-        }
         RenderCart();
 
     }
@@ -105,20 +102,9 @@ public class ShopperBehaviour : MonoBehaviour
     }
 
 
-    void HandlePickup()
-    {
-        if (PickupRange.Contains(RequestedItem.gameObject.transform.position))
-        {
-            ShopperCart.Add(RequestedItem);
-            Debug.Log(name + " recieved " + RequestedItem.name);
-            RequestedItem = null;
-        }
-    }
-
-
     void HandleItemRequests()
     {
-        if (!isInQueue && Timer <= 0 && ShopperCart.Count < TargetItems && RequestedItem == null)
+        if (!isInQueue && Timer <= 0 && ShopperCart.Count < TargetItems && RequestedItemType == ShopItemTypes.SHOPITEMTYPE.UNDEFINED)
         {
             isPendingItemRequest = true; //request an item 
             Timer = BaseRequestTime;
@@ -126,7 +112,7 @@ public class ShopperBehaviour : MonoBehaviour
         else
         {
             Timer -= Time.deltaTime;
-            if (RequestedItem != null || (isInQueue && ShopperCart.Count != 0))
+            if (RequestedItemType != ShopItemTypes.SHOPITEMTYPE.UNDEFINED || (isInQueue && ShopperCart.Count != 0))
             {
                 Mood -= Time.deltaTime;
             }
@@ -135,15 +121,21 @@ public class ShopperBehaviour : MonoBehaviour
 
     public void RequestItem(ShopItem s)
     {
-        RequestedItem = s;
+        RequestedItemType = s.ShopItemType;
         Debug.Log(name + " requesting " + s.name);
     }
 
-    public void PickupRequestedItem()
+    private void OnTriggerEnter(Collider other)
     {
-       ShopperCart.Add(RequestedItem);
-        RequestedItem = null;
+        ShopItem s;
+        if ((s = other.gameObject.GetComponentInParent<ShopItem>()) != null && s.ShopItemType == RequestedItemType)
+        {
+            if (ShopInfo.AvailableItemsByType[(int)RequestedItemType].Contains(s))
+            {
+                ShopperCart.Add(s);
+                ShopInfo.RemoveShopItem(s);
+                RequestedItemType = ShopItemTypes.SHOPITEMTYPE.UNDEFINED;
+            }
+        }
     }
-
-
 }

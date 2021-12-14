@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Leap.Unity;
 
 public class ShopInfo : MonoBehaviour
 {
@@ -9,8 +10,13 @@ public class ShopInfo : MonoBehaviour
     private List<ShopItem> AvailableItems;
     public  List<ShopperBehaviour> ActiveShoppers;
     private Queue<ShopperBehaviour> QueuedShoppers;
+    public  List<List<ShopItem>> AvailableItemsByType;
     bool init = false;
 
+    public void Start()
+    {
+        QueuedShoppers = new Queue<ShopperBehaviour>();
+    }
 
     public int QueueLength()
     {
@@ -63,12 +69,14 @@ public class ShopInfo : MonoBehaviour
 
     public bool RemoveShopItem(ShopItem s)
     {
-       return AvailableItems.Remove(s);
+       AvailableItems.Remove(s);
+       return AvailableItemsByType[(int)s.ShopItemType].Remove(s);
     }
 
     public void AddShopItem(ShopItem s)
     {
         AvailableItems.Add(s);
+        AvailableItemsByType[(int)s.ShopItemType].Add(s);
     }
 
     public void PopulateLists()
@@ -76,8 +84,11 @@ public class ShopInfo : MonoBehaviour
         AvailableItems = new List<ShopItem>(FindObjectsOfType<ShopItem>());
         if (AvailableItems.Count == 0) Debug.LogError("Can't find any shopitems!");
         ActiveShoppers = new List<ShopperBehaviour>(FindObjectsOfType<ShopperBehaviour>());
-        QueuedShoppers = new Queue<ShopperBehaviour>();
 
+        for(int i = 0; i <= (int)ShopItemTypes.GetMax(); ++i)
+        {
+            AvailableItemsByType.Add((List<ShopItem>)AvailableItems.Where(x => x.ShopItemType == (ShopItemTypes.SHOPITEMTYPE)i)); //creates a list of shop items for each shop item type and adds them to availableitemsbytype
+        }
         
     }
 
@@ -93,5 +104,9 @@ public class ShopInfo : MonoBehaviour
         return AvailableItems.Count;
     }
 
+    public int ItemsAvailableCount(ShopItemTypes.SHOPITEMTYPE s)
+    {
+        return AvailableItemsByType[(int)s].Count;
+    }
 
 }

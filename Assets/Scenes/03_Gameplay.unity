@@ -892,6 +892,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1465539080}
     m_Modifications:
+    - target: {fileID: 1865881532540001322, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
+      propertyPath: HandProcessor
+      value: 
+      objectReference: {fileID: 699628103}
     - target: {fileID: 6671859048227742928, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1207,7 +1211,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.04496444, y: -0.0000000057661964, z: -0.0000002450703}
+  m_ConnectedAnchor: {x: -0.04496444, y: -0.0000000057661964, z: -0.0000002487956}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1511,6 +1515,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &307323564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307323562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf328ed6960361b4386dde01abb4c094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopperCart: []
+  BaseMood: 100
+  BaseRequestTime: 5
+  MaxCartSize: 4
+  isInQueue: 0
+  isPendingItemRequest: 0
+  MoodDelta: 10
+  PickupRange:
+    m_Center: {x: 0, y: 0.25, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+  ShopperMovement: {fileID: 1922179057}
+  SlapVelocity: 100
+  CartItemOffset: {x: 0.5, y: 0, z: 0}
+  BaseShakeTimer: 1
 --- !u!1 &323180148 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2555734329826457467, guid: 6789d7d377301d54a8a880801d3fb0dc, type: 3}
@@ -2122,6 +2152,89 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4283805679797864671, guid: 8f4ed36510a8e49019c7fb3af08135eb, type: 3}
   m_PrefabInstance: {fileID: 5358092020985525648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &439118649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439118650}
+  - component: {fileID: 439118652}
+  - component: {fileID: 439118651}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &439118650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439118649}
+  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
+  m_LocalPosition: {x: -6.5, y: 2.33, z: -3.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 448887937}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+--- !u!81 &439118651
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439118649}
+  m_Enabled: 1
+--- !u!20 &439118652
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439118649}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &440597194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7285828200051953197, guid: 5200f0ad3b683c347862015b0ed71ec2, type: 3}
@@ -2155,7 +2268,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.009632191, y: 0.000012500803, z: -0.09747662}
+  m_ConnectedAnchor: {x: -0.009632183, y: 0.00001250081, z: -0.097476624}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -2214,6 +2327,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CashierDesk
       objectReference: {fileID: 0}
+    - target: {fileID: 7066808540442095632, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
+      propertyPath: Scanner
+      value: 
+      objectReference: {fileID: 832195501}
+    - target: {fileID: 7066808540442095632, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
+      propertyPath: HandProcessor
+      value: 
+      objectReference: {fileID: 699628103}
+    - target: {fileID: 7066808540442095632, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
+      propertyPath: MinigameCamera
+      value: 
+      objectReference: {fileID: 439118652}
     - target: {fileID: 7651975892343725602, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2228,7 +2353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7651975892343725602, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7651975892343725602, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2487,7 +2612,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.04611925, y: 0.000000022409944, z: 0.000000011175871}
+  m_ConnectedAnchor: {x: -0.046119235, y: 0.000000025203912, z: 0.000000013038516}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2926,7 +3051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856591974071314435, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856591974071314435, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2962,6 +3087,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+--- !u!114 &699628103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3728784338330021907, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+  m_PrefabInstance: {fileID: 699628102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92e8440fd30210499a9eb760978002b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &727021494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7939253385447565490, guid: 022120f618709db4184e9898b06fad7c, type: 3}
@@ -3486,6 +3622,36 @@ Transform:
   m_Father: {fileID: 890140755}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &832195500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 832195501}
+  m_Layer: 0
+  m_Name: ScannerPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &832195501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832195500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 448887937}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &840424778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4268080361714327600, guid: 32c1fe5eb679586499856fc841060e0a, type: 3}
@@ -3777,7 +3943,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000059604634, y: -0.00000007078052, z: -0.048956085}
+  m_ConnectedAnchor: {x: -0.000000059604634, y: -0.00000007078052, z: -0.04895608}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4180,7 +4346,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.046399213, y: 8.8220986e-10, z: 0.00000006053597}
+  m_ConnectedAnchor: {x: -0.046399213, y: 8.8220986e-10, z: 0.00000006426126}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4277,7 +4443,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.08478023, y: -0.000019903839, z: 0.00000043213373}
+  m_ConnectedAnchor: {x: -0.08478023, y: -0.000019903837, z: 0.00000043213373}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -5299,7 +5465,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.030145764, y: -0.0000000631262, z: 0.000000008032656}
+  m_ConnectedAnchor: {x: -0.030145735, y: -0.00000005756737, z: 0.000000010710209}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -5671,6 +5837,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1385858638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385858636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf328ed6960361b4386dde01abb4c094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopperCart: []
+  BaseMood: 100
+  BaseRequestTime: 5
+  MaxCartSize: 4
+  isInQueue: 0
+  isPendingItemRequest: 0
+  MoodDelta: 10
+  PickupRange:
+    m_Center: {x: 0, y: 0.25, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+  ShopperMovement: {fileID: 1658297720}
+  SlapVelocity: 100
+  CartItemOffset: {x: 0.5, y: 0, z: 0}
+  BaseShakeTimer: 1
 --- !u!1 &1389390475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6789d7d377301d54a8a880801d3fb0dc, type: 3}
@@ -5695,6 +5887,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1389390477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389390475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf328ed6960361b4386dde01abb4c094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopperCart: []
+  BaseMood: 100
+  BaseRequestTime: 5
+  MaxCartSize: 4
+  isInQueue: 0
+  isPendingItemRequest: 0
+  MoodDelta: 10
+  PickupRange:
+    m_Center: {x: 0, y: 0.25, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+  ShopperMovement: {fileID: 351152135}
+  SlapVelocity: 100
+  CartItemOffset: {x: 0.5, y: 0, z: 0}
+  BaseShakeTimer: 1
 --- !u!1 &1421332246
 GameObject:
   m_ObjectHideFlags: 0
@@ -6680,6 +6898,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1465539080}
     m_Modifications:
+    - target: {fileID: 1865881532540001322, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
+      propertyPath: HandProcessor
+      value: 
+      objectReference: {fileID: 699628103}
     - target: {fileID: 6671859048227742928, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6982,6 +7204,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAtTarget: {fileID: 585342945}
+--- !u!114 &1830214045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830214040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf328ed6960361b4386dde01abb4c094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopperCart: []
+  BaseMood: 100
+  BaseRequestTime: 5
+  MaxCartSize: 4
+  isInQueue: 0
+  isPendingItemRequest: 0
+  MoodDelta: 10
+  PickupRange:
+    m_Center: {x: 0, y: 0.25, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+  ShopperMovement: {fileID: 73387137}
+  SlapVelocity: 100
+  CartItemOffset: {x: 0.5, y: 0, z: 0}
+  BaseShakeTimer: 1
 --- !u!1 &1843790625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2486420778618896525, guid: 6789d7d377301d54a8a880801d3fb0dc, type: 3}
@@ -7482,7 +7730,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000059604634, y: 0.00000007078052, z: 0.048956085}
+  m_ConnectedAnchor: {x: 0.000000059604634, y: 0.00000007078052, z: 0.04895608}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -7842,6 +8090,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1979130225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979130223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf328ed6960361b4386dde01abb4c094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopperCart: []
+  BaseMood: 100
+  BaseRequestTime: 5
+  MaxCartSize: 4
+  isInQueue: 0
+  isPendingItemRequest: 0
+  MoodDelta: 10
+  PickupRange:
+    m_Center: {x: 0, y: 0.25, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+  ShopperMovement: {fileID: 612944682}
+  SlapVelocity: 100
+  CartItemOffset: {x: 0.5, y: 0, z: 0}
+  BaseShakeTimer: 1
 --- !u!1 &1995591923 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7939253385447565490, guid: a23069e9d7caaba4f967c46de1c8f55e, type: 3}
@@ -8206,7 +8480,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.010403564, y: 0.000011367807, z: 0.086366415}
+  m_ConnectedAnchor: {x: -0.010403564, y: 0.000011367807, z: 0.08636641}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
