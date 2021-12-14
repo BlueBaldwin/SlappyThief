@@ -34,4 +34,28 @@ public class ThoughtBubbles : MonoBehaviour
       // Moving the sprites position above the character
       transform.position = (characeter.transform.position + bubbleOffset) ;
    }
+
+   void OnTriggerEnter(Collider other)
+   {
+      switch (other.tag)
+      {
+         case "RedShirt":
+         {
+            Destroy(other.gameObject);
+            break;
+         }
+          case "BlueShirt":
+         {
+            Destroy(other.gameObject);
+            break;
+         }
+         case "Trousers":
+         {
+            Destroy(other.gameObject);
+            break;
+         }
+          default:
+          break;
+      }
+   }
 }
