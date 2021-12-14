@@ -8,8 +8,7 @@ public class InventoryItem : MonoBehaviour
 {
 
     AnchorableBehaviour ab;
-    [SerializeField]
-    float scaleFactor; //scales object to/from inventory size
+    public float scaleFactor; //scales object to/from inventory size
     // Start is called before the first frame update
     void Start()
     {

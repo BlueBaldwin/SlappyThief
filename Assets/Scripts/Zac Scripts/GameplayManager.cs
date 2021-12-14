@@ -27,6 +27,7 @@ public class GameplayManager : MonoBehaviour
 
     private void Update()
     {
+        HandManager.Tick();
         HandleMinigames();
         HandleInventoryAttachment();
         HandleShoppers();

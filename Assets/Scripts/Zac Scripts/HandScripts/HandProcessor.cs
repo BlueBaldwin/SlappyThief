@@ -53,6 +53,11 @@ public class HandProcessor : PostProcessProvider
         HandPositionScalar = BaseHandPositionScalar;
     }
 
+    public Vector3 GetHandPositionScalar()
+    {
+        return HandPositionScalar;
+    }
+
     private void Start()
     {
         HandPositionScalar = BaseHandPositionScalar;

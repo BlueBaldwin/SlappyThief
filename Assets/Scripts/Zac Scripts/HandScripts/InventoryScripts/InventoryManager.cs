@@ -28,12 +28,12 @@ public class InventoryManager : MonoBehaviour
     float ItemScale;
     Hand Hand;
 
-    [SerializeField]
-    HandProcessor HandProcessor;
-
     List<GameObject> InventoryObjects;
 
     float OffsetX;
+
+    [SerializeField]
+    HandProcessor HandProcessor;
 
     public void Init()
     {
@@ -85,10 +85,9 @@ public class InventoryManager : MonoBehaviour
     {
         if (Hand != null)
         {
-            gameObject.transform.position = LeapUnityUtils.LeapV3ToUnityV3(Hand.PalmPosition);
+            gameObject.transform.position = Vector3.Scale(LeapUnityUtils.LeapV3ToUnityV3(Hand.PalmPosition), HandProcessor.GetHandPositionScalar());
             gameObject.transform.rotation = LeapUnityUtils.LeapQuatToUnityQuat(Hand.Rotation);
         }
-        
     }
 
 }

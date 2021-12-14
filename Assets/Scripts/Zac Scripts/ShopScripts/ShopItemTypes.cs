@@ -6,8 +6,8 @@ public static class ShopItemTypes
     public enum SHOPITEMTYPE
     {
         UNDEFINED = -1,
-        SHIRTBLUE = 0,
-        SHIRTRED = 1,
+        SHIRTA = 0,
+        SHIRTB = 1,
         TROUSERS = 2,
     }
 

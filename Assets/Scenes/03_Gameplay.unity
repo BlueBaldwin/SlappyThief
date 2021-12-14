@@ -1534,12 +1534,9 @@ MonoBehaviour:
   isInQueue: 0
   isPendingItemRequest: 0
   MoodDelta: 10
-  PickupRange:
-    m_Center: {x: 0, y: 0.25, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
-  ShopperMovement: {fileID: 1922179057}
   SlapVelocity: 100
   CartItemOffset: {x: 0.5, y: 0, z: 0}
+  PickupRange: {x: 0.25, y: 0.25, z: 0.25}
   BaseShakeTimer: 1
 --- !u!1 &323180148 stripped
 GameObject:
@@ -2162,7 +2159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 439118650}
   - component: {fileID: 439118652}
-  - component: {fileID: 439118651}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2184,14 +2180,6 @@ Transform:
   m_Father: {fileID: 448887937}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
---- !u!81 &439118651
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439118649}
-  m_Enabled: 1
 --- !u!20 &439118652
 Camera:
   m_ObjectHideFlags: 0
@@ -3023,14 +3011,30 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 843728251561489961, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.085120015
+      value: -0.08512
       objectReference: {fileID: 0}
+    - target: {fileID: 1772381910800592745, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: BaseOffsetX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772381910800592745, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: BaseOffsetZ
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772381910800592745, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: HandProcessor
+      value: 
+      objectReference: {fileID: 699628103}
     - target: {fileID: 5548371852865711968, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: ModelPool.Array.data[0].IsLeftToBeSpawned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548371852865711968, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: ModelPool.Array.data[0].IsRightToBeSpawned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548371853519351773, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5573289221247495874, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
@@ -4198,6 +4202,24 @@ CapsuleCollider:
   m_Height: 0.022242516
   m_Direction: 0
   m_Center: {x: -0.011121258, y: 0, z: 0}
+--- !u!1 &895762720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2421737849716419945, guid: dbb7e5f43d15c43219ad75df08434d47, type: 3}
+  m_PrefabInstance: {fileID: 349481344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &895762724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895762720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cc7d8722945a04ab189398c4cd697d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopItemType: 2
 --- !u!1 &910460073
 GameObject:
   m_ObjectHideFlags: 0
@@ -4695,6 +4717,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1047369262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 555385845071116386, guid: 150ce913678114a9caf3d322cff45185, type: 3}
+  m_PrefabInstance: {fileID: 1856406691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1047369266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047369262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cc7d8722945a04ab189398c4cd697d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopItemType: 1
+--- !u!114 &1047369267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047369262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aceea2f5c70da64e893474302ff53e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isAttached: 0
+  _anchor: {fileID: 0}
+  _anchorGroup: {fileID: 0}
+  maxAnchorRange: 0.3
+  useTrajectory: 0
+  _motionlessRangeFraction: 0.4
+  _maxMotionlessRange: 0.120000005
+  _maxAttachmentAngle: 60
+  _alwaysAttachDistance: 0
+  lockToAnchor: 0
+  lockWhenAttached: 1
+  matchAnchorMotionWhileAttaching: 1
+  anchorLerpCoeffPerSec: 20
+  anchorRotation: 0
+  interactionBehaviour: {fileID: 0}
+  _interactionBehaviourIsNull: 1
+  detachWhenGrasped: 0
+  _tryAnchorNearestOnGraspEnd: 1
+  isAttractedByHand: 0
+  maxAttractionReach: 0.1
+  attractionReachByDistance:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _eventTable:
+    _entries: []
 --- !u!1 &1048736099 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -627057214806185787, guid: a23069e9d7caaba4f967c46de1c8f55e, type: 3}
@@ -5856,12 +5936,9 @@ MonoBehaviour:
   isInQueue: 0
   isPendingItemRequest: 0
   MoodDelta: 10
-  PickupRange:
-    m_Center: {x: 0, y: 0.25, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
-  ShopperMovement: {fileID: 1658297720}
   SlapVelocity: 100
   CartItemOffset: {x: 0.5, y: 0, z: 0}
+  PickupRange: {x: 0.25, y: 0.25, z: 0.25}
   BaseShakeTimer: 1
 --- !u!1 &1389390475 stripped
 GameObject:
@@ -5906,12 +5983,9 @@ MonoBehaviour:
   isInQueue: 0
   isPendingItemRequest: 0
   MoodDelta: 10
-  PickupRange:
-    m_Center: {x: 0, y: 0.25, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
-  ShopperMovement: {fileID: 351152135}
   SlapVelocity: 100
   CartItemOffset: {x: 0.5, y: 0, z: 0}
+  PickupRange: {x: 0.25, y: 0.25, z: 0.25}
   BaseShakeTimer: 1
 --- !u!1 &1421332246
 GameObject:
@@ -6861,6 +6935,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6164152451720037934, guid: dbb7e5f43d15c43219ad75df08434d47, type: 3}
   m_PrefabInstance: {fileID: 1660605782}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1714599067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 555385845071116386, guid: 150ce913678114a9caf3d322cff45185, type: 3}
+  m_PrefabInstance: {fileID: 1144206521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1714599071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714599067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cc7d8722945a04ab189398c4cd697d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopItemType: 0
 --- !u!1 &1765051572
 GameObject:
   m_ObjectHideFlags: 0
@@ -6958,7 +7050,8 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
 --- !u!4 &1767283595 stripped
 Transform:
@@ -7223,12 +7316,9 @@ MonoBehaviour:
   isInQueue: 0
   isPendingItemRequest: 0
   MoodDelta: 10
-  PickupRange:
-    m_Center: {x: 0, y: 0.25, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
-  ShopperMovement: {fileID: 73387137}
   SlapVelocity: 100
   CartItemOffset: {x: 0.5, y: 0, z: 0}
+  PickupRange: {x: 0.25, y: 0.25, z: 0.25}
   BaseShakeTimer: 1
 --- !u!1 &1843790625 stripped
 GameObject:
@@ -8109,12 +8199,9 @@ MonoBehaviour:
   isInQueue: 0
   isPendingItemRequest: 0
   MoodDelta: 10
-  PickupRange:
-    m_Center: {x: 0, y: 0.25, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
-  ShopperMovement: {fileID: 612944682}
   SlapVelocity: 100
   CartItemOffset: {x: 0.5, y: 0, z: 0}
+  PickupRange: {x: 0.25, y: 0.25, z: 0.25}
   BaseShakeTimer: 1
 --- !u!1 &1995591923 stripped
 GameObject:

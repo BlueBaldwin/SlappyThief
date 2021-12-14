@@ -22,10 +22,10 @@ public class HandManager : MonoBehaviour
     GameObject RTarget;
 
     [SerializeField]
-     public HandProcessor HandProcessor;
+     HandProcessor HandProcessor;
 
 
-    public void Update()
+    public void Tick()
     {
         frame = Provider.CurrentFrame;
         HandProcessor.ProcessFrame(ref frame); //process frame through custom provider that is used by the InteractionManager and HandModelManager

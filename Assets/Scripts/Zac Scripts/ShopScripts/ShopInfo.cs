@@ -84,10 +84,12 @@ public class ShopInfo : MonoBehaviour
         AvailableItems = new List<ShopItem>(FindObjectsOfType<ShopItem>());
         if (AvailableItems.Count == 0) Debug.LogError("Can't find any shopitems!");
         ActiveShoppers = new List<ShopperBehaviour>(FindObjectsOfType<ShopperBehaviour>());
+        AvailableItemsByType = new List<List<ShopItem>>();
 
         for(int i = 0; i <= (int)ShopItemTypes.GetMax(); ++i)
         {
-            AvailableItemsByType.Add((List<ShopItem>)AvailableItems.Where(x => x.ShopItemType == (ShopItemTypes.SHOPITEMTYPE)i)); //creates a list of shop items for each shop item type and adds them to availableitemsbytype
+            AvailableItemsByType.Add(new List<ShopItem>(AvailableItems.Where(x => x.ShopItemType == (ShopItemTypes.SHOPITEMTYPE)i))); //creates a list of shop items for each shop item type and adds them to availableitemsbytype
+            Debug.Log(((ShopItemTypes.SHOPITEMTYPE)i).ToString() + " Count:" + AvailableItemsByType[i].Count);
         }
         
     }

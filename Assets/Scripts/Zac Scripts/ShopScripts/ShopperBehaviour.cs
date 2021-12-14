@@ -20,19 +20,19 @@ public class ShopperBehaviour : MonoBehaviour
     public bool isPendingItemRequest;
     [SerializeField]
     float MoodDelta;
-    [SerializeField]
-    BoxCollider PickupRange;
+    BoxCollider PickupBox;
     ShopInfo ShopInfo;
 
-
-    [SerializeField]
-    GameObject ShopperMovement;
+    Transform ShopperMovement;
 
     [SerializeField]
     float SlapVelocity;
 
     [SerializeField]
     Vector3 CartItemOffset;
+
+    [SerializeField]
+    Vector3 PickupRange;
 
     InteractionBehaviour ib;
 
@@ -49,9 +49,19 @@ public class ShopperBehaviour : MonoBehaviour
         TargetItems = Random.Range(1, MaxCartSize);
         isInQueue = false;
         ib = GetComponent<InteractionBehaviour>();
+        if(ib == null)
+        {
+            ib = gameObject.AddComponent<InteractionBehaviour>();
+        }
         ib.OnContactBegin += OnSlap;
         ib.OnGraspStay += OnShake;
         ShakeTimer = BaseShakeTimer;
+        ShopperMovement = GetComponentInChildren<SkinnedMeshRenderer>().rootBone;
+        PickupBox = gameObject.AddComponent<BoxCollider>();
+        PickupBox.isTrigger = true;
+        PickupBox.center = ShopperMovement.localPosition;
+        PickupBox.size = PickupRange;
+        
         
     }
     void OnSlap()
@@ -87,10 +97,8 @@ public class ShopperBehaviour : MonoBehaviour
 
     private void Update()
     {
-        PickupRange.center = ShopperMovement.transform.position;
         HandleItemRequests();
         RenderCart();
-
     }
 
     void RenderCart()
