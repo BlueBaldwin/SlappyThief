@@ -6,71 +6,63 @@ using Random = UnityEngine.Random;
 
 public class NPCManager : MonoBehaviour
 {
-    // public Dictionary<string, Queue<GameObject>> npcDictionary;
+    public static List<GameObject> inGameNPC = new List<GameObject>();
+
     [SerializeField] private List<GameObject> NPCList = new List<GameObject>();
-    [SerializeField] private List<GameObject> inGameNPC = new List<GameObject>();
-    [SerializeField] private float spawnGap = 5.0f;
+    [SerializeField] private float spawnDelay = 5.0f;
     [SerializeField] private Transform spawnOrigin;
+    
     //[SerializeField] private int xSpawnBounds;
     //[SerializeField] private int zSpawnBounds;
-
-    private bool bSpawnNewChar = false;
-    private bool bStartSpawnTimer = false;
     
-
+    private bool bStartSpawnTimer = false;
     private GameObject returningCharacter;
     
     // Min / max spawn area = ///  x = -28.167 / 16 ///  z = -6 / 2.5
 
     private void Start()
     {
-        bSpawnNewChar = true;
         bStartSpawnTimer = true;
     }
 
     private void Update()
     {
-        if (NPCList != null && NPCList.Count >= 1)
+        // Checking the total npc's in the scene
+        if (NPCList != null && NPCList.Count > 1)
         {
             if (bStartSpawnTimer)
             {
-                Invoke("SpawnNPC", 5);
+                // Spawning delay
+                Invoke("SpawnNPC", spawnDelay);
                 bStartSpawnTimer = false;
-                //StartCoroutine(SpawnTimer());
             }
         }
     }
-
-    IEnumerator SpawnTimer()
-    {
-        if (bSpawnNewChar)
-        {
-            if (bStartSpawnTimer)
-            { 
-                yield return new WaitForSeconds(spawnGap);
-                SpawnNPC();
-            }
-        }
-    }
-
+    
+    // Spawns NPC from the NPCList into the scene within a radius
+    // Removing from the spawning pool (NPCList and adding them to the inGameNPC list
     private void SpawnNPC()
     {
         int characterSelection = Random.Range(1, NPCList.Count);
-        // Vector2 radiusSpawn = Random.insideUnitCircle * 5;
-        // spawnOrigin.transform.position += new Vector3(radiusSpawn.x, 0.0f, radiusSpawn.y);
-        Instantiate(NPCList[characterSelection], spawnOrigin.position, Quaternion.identity);
+        Vector2 radiusSpawn = Random.insideUnitCircle * 5;
+        Vector3 TempPos = new Vector3(radiusSpawn.x, 1f, radiusSpawn.y);
+        TempPos += spawnOrigin.transform.position;
+        Instantiate(NPCList[characterSelection], TempPos, Quaternion.identity);
         inGameNPC.Add(NPCList[characterSelection]);
         NPCList.Remove(NPCList[characterSelection]);
         bStartSpawnTimer = true;
     }
-    private void ReturnCharacter()
-    {
-        // Add character back to the list
-        NPCList.Add(returningCharacter);
-    }
-
+    
+    // Once character has finished shopping return the charcater to the list
     private void OnTriggerEnter(Collider other)
     {
         returningCharacter = other.gameObject;
+        ReturnCharacter(returningCharacter);
     }
+    private void ReturnCharacter(GameObject returningCharacter)
+         {
+             // Add character back to the list
+             NPCList.Add(returningCharacter);
+             inGameNPC.Remove(returningCharacter);
+         }
 }
