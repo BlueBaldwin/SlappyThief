@@ -11,7 +11,7 @@ public class MessClothes : MonoBehaviour
     [SerializeField] float timerDuration;
     private float timer;
     private bool startTheTimer;
-    public bool isMessy;
+    public bool isMessy; //added for foldminigame integration -- Zac
 
     private void Awake()
     {

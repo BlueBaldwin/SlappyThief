@@ -138,6 +138,15 @@ public class ShopperBehaviour : MonoBehaviour
     private void Update()
     {
         HandleItemRequests();
+        if(RequestedItemType != ShopItemTypes.SHOPITEMTYPE.UNDEFINED)
+        {
+            //TODO: draw speech bubble 
+        }
+        else
+        {
+            //TODO: hide speechbubble
+        }
+
         if (ShopperCart.Count > 0)
         {
             RenderCart();
