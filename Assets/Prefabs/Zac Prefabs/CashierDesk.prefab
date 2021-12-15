@@ -395,10 +395,11 @@ MonoBehaviour:
   MinigameCamera: {fileID: 0}
   HandProcessor: {fileID: 0}
   HandSizeScalar: 0.3
-  LeapOffset: {x: -2.5, y: -1, z: 0}
+  MinigameMovementScalar: {x: 1, y: 1, z: 1}
+  LeapOffset: {x: -1.5, y: -1, z: 0}
   IsFinished: 0
   IsLoaded: 0
-  ItemOffset: {x: -0.2, y: 0.2, z: 1}
+  ClothesSpawnPoint: {fileID: 0}
   Scanner: {fileID: 0}
   Coin: {fileID: 7002732221997686009, guid: 1ae8f7ac2ddf8de4eaef992fb78c8ece, type: 3}
   TillTray: {fileID: 2773553791046215205}

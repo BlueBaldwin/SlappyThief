@@ -53,7 +53,7 @@ public class ShopperBehaviour : MonoBehaviour
 
     ThoughtBubbles BubbleComponent;
 
-    
+    float CartScale = 0.5f;
     private void Start()
     { 
 
@@ -103,7 +103,7 @@ public class ShopperBehaviour : MonoBehaviour
     {
         //navmesh does not like being taken hostage, so turn it off and enable ragdolls
         nma.enabled = false;
-        RagdollObject.SetActive(true);
+       // RagdollObject.SetActive(true); //ragdolls not working atm 
         
     }
 
@@ -111,7 +111,8 @@ public class ShopperBehaviour : MonoBehaviour
     {
         //disable ragdolls and enable navmesh
         nma.enabled = true;
-        RagdollObject.SetActive(false);
+        //RagdollObject.SetActive(false);
+       // gameObject.transform.rotation = new Quaternion(0, 90, 0, Quaternion.identity.z);
     }
 
     void OnSlap()
@@ -207,7 +208,7 @@ public class ShopperBehaviour : MonoBehaviour
         r.useGravity = false;
         r.velocity = Vector3.zero;
         s.GetComponent<AnchorableBehaviour>().Detach();
-
+        s.gameObject.transform.localScale *= CartScale;
     }
 
     public void RemoveItemFromCart(ShopItem s)
@@ -217,6 +218,7 @@ public class ShopperBehaviour : MonoBehaviour
         r.isKinematic = false;
         r.useGravity = true;
         r.velocity = Vector3.zero;
+        s.gameObject.transform.localScale *= 1/CartScale;
 
     }
 

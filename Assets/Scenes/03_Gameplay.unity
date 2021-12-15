@@ -2342,6 +2342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CashierDesk
       objectReference: {fileID: 0}
+    - target: {fileID: 3361181566400675360, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.227
+      objectReference: {fileID: 0}
     - target: {fileID: 4534698279328859471, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2355,14 +2359,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 832195501}
     - target: {fileID: 7066808540442095632, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
-      propertyPath: LeapOffset.x
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7066808540442095632, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
-      propertyPath: LeapOffset.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7066808540442095632, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
       propertyPath: HandProcessor
       value: 
       objectReference: {fileID: 699628103}
@@ -2374,6 +2370,18 @@ PrefabInstance:
       propertyPath: ClothesSpawnPoint
       value: 
       objectReference: {fileID: 807638517}
+    - target: {fileID: 7066808540442095632, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
+      propertyPath: MinigameMovementScalar.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066808542255974738, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066808542255974738, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
+      propertyPath: m_Center.y
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7651975892343725602, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3653,7 +3661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856591974071314445, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
@@ -4314,7 +4322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807638516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.809, y: 3.109, z: -2.321}
+  m_LocalPosition: {x: -5.482, y: 1.5583, z: -2.197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 448887937}
@@ -4374,7 +4382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832195500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.581, y: 1.486, z: -2.321}
+  m_LocalPosition: {x: -6.133, y: 1.486, z: -2.321}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 448887937}
@@ -7393,6 +7401,24 @@ Transform:
   m_Father: {fileID: 100957823}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1451268431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3343522624332338164, guid: 8fa902857386557468d0bbb71798ae27, type: 3}
+  m_PrefabInstance: {fileID: 448887936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1451268432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451268431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1523192, y: 1.4316077, z: 1.4092499}
+  m_Center: {x: -6.556647, y: 1.950978, z: -2.7343445}
 --- !u!1 &1458383636 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6126604195352524321, guid: a23069e9d7caaba4f967c46de1c8f55e, type: 3}

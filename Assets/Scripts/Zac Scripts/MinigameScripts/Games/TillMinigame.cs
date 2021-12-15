@@ -25,6 +25,8 @@ public class TillMinigame : Minigame
     bool TakenMoney;
     bool CoinsSpawned;
 
+    float ItemScale = 0.75f;
+
     public override void Start()
     {
         base.Start();
@@ -71,7 +73,7 @@ public class TillMinigame : Minigame
                 RayEnd = Hit.point;
                 ShopItem s;
                 Debug.Log("SCANNED" + Hit.collider.name);
-                if ((s=Hit.collider.gameObject.GetComponentInParent<ShopItem>()) != null && s == CurrentItem.gameObject.GetComponent<ShopItem>())
+                if ((s = Hit.collider.gameObject.GetComponentInParent<ShopItem>()) != null && s == CurrentItem.gameObject.GetComponent<ShopItem>())
                 {
                     SpawnedObjects.Add(CurrentItem.gameObject);
                     CurrentItem = null;
@@ -92,6 +94,7 @@ public class TillMinigame : Minigame
             {
                 IsFinished = true;
                 IsLoaded = false;
+                lr.enabled = false;
                 Unload();
             }
         }
@@ -100,10 +103,8 @@ public class TillMinigame : Minigame
         {
             CurrentItem = CurrentShopper.ShopperCart[0];
             CurrentShopper.ShopperCart.Remove(CurrentItem);
-            CurrentItem.transform.position = ClothesSpawnPoint.position;
-            Rigidbody rb = CurrentItem.gameObject.GetComponent<Rigidbody>();
-            rb.isKinematic = false;
-            rb.useGravity = true;
+            CurrentItem.transform.localScale *= ItemScale;
+            SpawnItem(CurrentItem);
         }
 
         if(CurrentItem == null)
@@ -111,6 +112,27 @@ public class TillMinigame : Minigame
             CurrentShopper = null;
         }
 
+    }
+
+    private void SpawnItem(ShopItem s)
+    {
+        CurrentItem.transform.position = ClothesSpawnPoint.position;
+        Rigidbody rb = CurrentItem.gameObject.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = false;
+        rb.useGravity = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject != null && CurrentItem != null)
+        {
+            ShopItem s;
+            if ((s = other.gameObject.GetComponentInParent<ShopItem>()) != null && s == CurrentItem.gameObject.GetComponent<ShopItem>())
+            {
+                SpawnItem(CurrentItem); //if currentitem leaves minigame zone bring it back so we dont get softlocked
+            }
+        }
     }
 
 }

@@ -13,6 +13,7 @@ public abstract class Minigame : MonoBehaviour
     HandProcessor HandProcessor;
     [SerializeField]
     float HandSizeScalar;
+    [SerializeField]
     Vector3 MinigameMovementScalar;
     [SerializeField]
     Vector3 LeapOffset;
@@ -30,7 +31,7 @@ public abstract class Minigame : MonoBehaviour
         MainCamera = Camera.main;
         MinigameTransform = LeapUnityUtils.UnityTransformToLeapTransform(MinigameCamera.transform);
         MinigameTransform.translation += LeapUnityUtils.UnityV3ToLeapV3(LeapOffset);
-        MinigameMovementScalar = Vector3.one*HandSizeScalar;
+        MinigameMovementScalar *= HandSizeScalar;
     } 
 
     public virtual void Load()

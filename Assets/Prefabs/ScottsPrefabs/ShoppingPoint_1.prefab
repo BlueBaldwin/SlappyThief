@@ -705,7 +705,8 @@ MonoBehaviour:
   MinigameCamera: {fileID: 2922842783832687578}
   HandProcessor: {fileID: 0}
   HandSizeScalar: 0.3
-  LeapOffset: {x: 0, y: -1, z: 2.5}
+  MinigameMovementScalar: {x: 1.5, y: 1.5, z: 1.5}
+  LeapOffset: {x: 0, y: -1, z: 1.5}
   IsFinished: 0
   IsLoaded: 0
   ClothingItem: {fileID: 5824901123327839918, guid: e7bd4ee9e1c270641b5c2ef296315547, type: 3}
