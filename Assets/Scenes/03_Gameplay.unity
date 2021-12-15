@@ -903,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 699628103}
     - target: {fileID: 2203875654352423072, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
       propertyPath: timerDuration
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6671859048227742928, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
       propertyPath: m_RootOrder
@@ -7006,7 +7006,7 @@ PrefabInstance:
       objectReference: {fileID: 699628103}
     - target: {fileID: 2203875654352423072, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
       propertyPath: timerDuration
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6671859048227742928, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
       propertyPath: m_RootOrder
@@ -11218,6 +11218,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5410132344115682648}
     m_Modifications:
+    - target: {fileID: 284238073407591385, guid: ba5862786f1195e4b8b8217a4b9a18de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6217476208579766856, guid: ba5862786f1195e4b8b8217a4b9a18de, type: 3}
       propertyPath: m_Name
       value: TROUSERS
@@ -11266,7 +11270,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 284238073407591385, guid: ba5862786f1195e4b8b8217a4b9a18de, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ba5862786f1195e4b8b8217a4b9a18de, type: 3}
 --- !u!1 &8552819844276175961
 GameObject:

@@ -6,7 +6,7 @@ public class FoldMinigame : Minigame
 {
     //local variables needed for this minigame
     [SerializeField]
-    GameObject Shirt;
+    GameObject ClothingItem;
 
     [SerializeField]
     GameObject FoldPoint;
@@ -24,7 +24,7 @@ public class FoldMinigame : Minigame
     public override void Start()
     {
         base.Start();
-        mc = GetComponent<MessClothes>();
+        mc = GetComponentInChildren<MessClothes>();
     }
 
 
@@ -57,7 +57,7 @@ public class FoldMinigame : Minigame
     public override void Load()
     {
         base.Load();
-        GameObject g = Instantiate(Shirt, gameObject.transform);
+        GameObject g = Instantiate(ClothingItem, gameObject.transform);
         SpawnedObjects.Add(g);
         g.transform.position += ClothingOffset;
 

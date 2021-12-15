@@ -646,9 +646,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57170d5d7f9d3be4fa1ae8e244e32b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tidyClothes: {fileID: 0}
-  messyClothes: {fileID: 0}
-  timerDuration: 0
+  bTidyUpMess: 0
+  tidyClothes: {fileID: 7658955541850680621}
+  messyClothes: {fileID: 5252675342441072324}
+  timerDuration: 4
+  isMessy: 0
 --- !u!1 &7485431770811490826
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +685,7 @@ Transform:
   - {fileID: 7760157955410956731}
   - {fileID: 4762005134472002284}
   - {fileID: 733516928864417382}
+  - {fileID: 2919083365150842255}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -5, y: 0, z: 0}
@@ -1419,6 +1422,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 710960762419350225, guid: eb1c330db072947e3903fb634cb8c71e, type: 3}
   m_PrefabInstance: {fileID: 1692212945982096790}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1846792115653360014
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6671859048227742928}
+    m_Modifications:
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855910694148767562, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+      propertyPath: m_Name
+      value: MessyClothes
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+--- !u!1 &5252675342441072324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5855910694148767562, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+  m_PrefabInstance: {fileID: 1846792115653360014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2919083365150842255 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+  m_PrefabInstance: {fileID: 1846792115653360014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2030083704110887120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1944,6 +2014,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+--- !u!1 &7658955541850680621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5855910694148767562, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}
+  m_PrefabInstance: {fileID: 4255423070927393383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &733516928864417382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3540873285654012929, guid: eac0d9028eb6b4f1b93eea68866e5ab0, type: 3}

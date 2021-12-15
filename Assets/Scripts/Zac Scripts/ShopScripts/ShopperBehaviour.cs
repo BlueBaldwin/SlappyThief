@@ -164,7 +164,7 @@ public class ShopperBehaviour : MonoBehaviour
                 a.Detach();
             }
             Transform t = s.gameObject.transform;
-            t.position =  Vector3.Lerp(t.transform.position,transform.position +  (t.forward *  ((i + 1) * CartItemOffset.x)) + (t.up * CartItemOffset.y)  + (t.right * CartItemOffset.z),0.8f);
+            t.position =  transform.position +  (t.forward *  ((i + 1) * CartItemOffset.x)) + (t.up * CartItemOffset.y)  + (t.right * CartItemOffset.z);
             s.gameObject.transform.rotation = s.GetBaseRotation();
         }
     }

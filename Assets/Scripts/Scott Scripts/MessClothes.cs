@@ -21,13 +21,14 @@ public class MessClothes : MonoBehaviour
     }
     private void Update()
     {
-        if(startTheTimer)
+        if(startTheTimer && !isMessy)
         {
             timer -= Time.deltaTime;
             Debug.Log(timer);
             if (timer <= 0)
             {
                 MessClothing();
+                timer = timerDuration;
                 startTheTimer = false;
             }
         }
@@ -45,6 +46,7 @@ public class MessClothes : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         timer = timerDuration;
+        startTheTimer = false;
         Debug.Log("NPC Exited");
     }
 
