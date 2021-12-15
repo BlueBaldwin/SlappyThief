@@ -123,7 +123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7760157955410956731}
   - component: {fileID: 2922842783832687578}
-  - component: {fileID: 5695880909583198481}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -188,13 +187,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5695880909583198481
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681047773042983223}
   m_Enabled: 1
 --- !u!1 &1859432032014203949
 GameObject:
@@ -655,7 +647,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57170d5d7f9d3be4fa1ae8e244e32b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 476890508157192180}
+  tidyClothes: {fileID: 0}
+  messyClothes: {fileID: 0}
+  timerDuration: 0
 --- !u!1 &7485431770811490826
 GameObject:
   m_ObjectHideFlags: 0

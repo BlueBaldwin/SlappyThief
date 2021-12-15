@@ -57,11 +57,11 @@ public class GameplayManager : MonoBehaviour
     {
         foreach(ShopperBehaviour s in ShopInfo.ActiveShoppers)
         {
-            if (s.isPendingItemRequest && ShopInfo.ItemsAvailableCount() > 0)
+            if(s.isPendingItemRequest && ShopInfo.ItemsAvailableCount() > 0)
             {
-                s.RequestItem(ShopInfo.RemoveRandomItem()); //shopper requests a random item
-                s.isPendingItemRequest = false;
+                s.RequestItem(ShopInfo.GetRandomItem().ShopItemType); //shopper requests a random item
             }
+
         }
     }
 

@@ -32,7 +32,7 @@ public class QueueTrigger : MonoBehaviour
         {
             if (s.isInQueue)
             {
-                ShopInfo.DequeueShopper(s);
+               // ShopInfo.DequeueShopper(s); for some reason this is triggering even when shopper isnt moving. Might just leave it doing nothing and see if its fine. 
             }
         }
     }

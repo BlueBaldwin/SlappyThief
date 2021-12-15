@@ -13,11 +13,6 @@ public class ShopInfo : MonoBehaviour
     public  List<List<ShopItem>> AvailableItemsByType;
     bool init = false;
 
-    public void Start()
-    {
-        QueuedShoppers = new Queue<ShopperBehaviour>();
-    }
-
     public int QueueLength()
     {
         return QueuedShoppers.Count;
@@ -41,7 +36,8 @@ public class ShopInfo : MonoBehaviour
     {
         if(QueuedShoppers.Count > 0)
         {
-            return QueuedShoppers.Dequeue();
+            ShopperBehaviour s = QueuedShoppers.Dequeue();
+            s.isInQueue = false;
         }
         return null;
     }
@@ -49,8 +45,9 @@ public class ShopInfo : MonoBehaviour
     public void DequeueShopper(ShopperBehaviour s)
     {
         //Queue does not have a remove method, so we have to replace the list with a version of the list that doesnt include the item we want to remove. Which sounds dumb and bad but whatever.
-        QueuedShoppers = (Queue<ShopperBehaviour>)QueuedShoppers.Where(x  => x!!= s);
+        QueuedShoppers = new Queue<ShopperBehaviour>(QueuedShoppers.Where(x  => x!= s));
         Debug.Log("Removed " + s.name + "from queue");
+        s.isInQueue = false;
     }
 
     public void Init()
@@ -84,14 +81,21 @@ public class ShopInfo : MonoBehaviour
         AvailableItems = new List<ShopItem>(FindObjectsOfType<ShopItem>());
         if (AvailableItems.Count == 0) Debug.LogError("Can't find any shopitems!");
         ActiveShoppers = new List<ShopperBehaviour>(FindObjectsOfType<ShopperBehaviour>());
-        AvailableItemsByType = new List<List<ShopItem>>();
+        QueuedShoppers = new Queue<ShopperBehaviour>();
+        AvailableItemsByType = new List<List<ShopItem>>(); //list for each type of shopitem
 
         for(int i = 0; i <= (int)ShopItemTypes.GetMax(); ++i)
         {
             AvailableItemsByType.Add(new List<ShopItem>(AvailableItems.Where(x => x.ShopItemType == (ShopItemTypes.SHOPITEMTYPE)i))); //creates a list of shop items for each shop item type and adds them to availableitemsbytype
-            Debug.Log(((ShopItemTypes.SHOPITEMTYPE)i).ToString() + " Count:" + AvailableItemsByType[i].Count);
+            //this means that we can check a type of item with shopitemtype enum e.g. AvailableItemsByType[(int)ShopItemType.SHIRTB].Count;
+            Debug.Log(((ShopItemTypes.SHOPITEMTYPE)i).ToString() + " Count:" + AvailableItemsByType[i].Count); 
         }
         
+    }
+
+    public ShopItem GetRandomItem()
+    {
+        return AvailableItems[Random.Range(0, AvailableItems.Count)];
     }
 
     public ShopItem RemoveRandomItem()

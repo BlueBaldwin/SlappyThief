@@ -9,29 +9,43 @@ public class ShopItem : MonoBehaviour
     [SerializeField]
     public ShopItemTypes.SHOPITEMTYPE ShopItemType;
 
-    float colliderSize = 2.5f;
+    Vector3 ColliderSize = new Vector3(5, 10, 3);
+    Quaternion BaseRotation;
+
+    public Quaternion GetBaseRotation()
+    {
+        return BaseRotation;
+    }
 
     private void Start()
     {
-
+        BaseRotation = transform.rotation;
         //ensure we can interact with shop items 
         if(gameObject.GetComponent<InteractionBehaviour>() == null){
-             gameObject.AddComponent<InteractionBehaviour>(); //should automatically add a rigidbody too
+             InteractionBehaviour ib = gameObject.AddComponent<InteractionBehaviour>(); //should automatically add a rigidbody too
+             ib.manager = FindObjectOfType<InteractionManager>();
+
         }
         if(gameObject.GetComponent<Collider>() == null)
         {
             BoxCollider bc = gameObject.AddComponent<BoxCollider>();
-            bc.size = Vector3.one * colliderSize;
-            bc.center = new Vector3(0, 0, 1);
+            bc.size = ColliderSize;
+            bc.center = new Vector3(0, 0, -1);
         }
         if(gameObject.GetComponent<AnchorableBehaviour>() == null)
         {
-             gameObject.AddComponent<AnchorableBehaviour>();
+           AnchorableBehaviour ab = gameObject.AddComponent<AnchorableBehaviour>();
+            ab.enabled = true;
+            ab.detachWhenGrasped = true;
+            ab.maxAnchorRange = 10;
+         
+            
         }
         if(gameObject.GetComponent<InventoryItem>() == null)
         {
             InventoryItem it = gameObject.AddComponent<InventoryItem>();
-            it.scaleFactor = 0.25f;
+            it.scaleFactor = 0.75f;
         }
+
     }
 }

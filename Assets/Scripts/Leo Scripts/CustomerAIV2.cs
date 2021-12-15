@@ -66,8 +66,12 @@ public class CustomerAIV2 : MonoBehaviour
     }
 
     void StartCustomerMovement() {              //function for when the game begins, customers will move to the start waypoints first
-        target = startWaypoint[waypointIndex].position;
-        nma.SetDestination(target);
+        if (waypointIndex >= 0 && waypointIndex < startWaypoint.Length)
+        {
+            target = startWaypoint[waypointIndex].position;
+            nma.SetDestination(target);
+        }
+        //added this check to suppress OutOfBounds errors. This is not the proper way to fix it I just need to be able to see my console output. --Zac
 	}
 
     void WaypointIteration() {
@@ -79,7 +83,7 @@ public class CustomerAIV2 : MonoBehaviour
 
     void CustomerMovement() {
         if (nma.hasPath == false) {
-            currentWaypoint = Random.Range(0, waypoint.Length + 1);             //this will randomly create a waypoint for the customer to go to from a selection of 
+            currentWaypoint = Random.Range(0, waypoint.Length); //removed +1 as it was causing out of bound errors - Zac              //this will randomly create a waypoint for the customer to go to from a selection of 
                                                                                 //current waypoints available
             Debug.Log(inShopWaypointIndex);
             nma.SetDestination(waypoint[currentWaypoint].transform.position);   //set the customers position to a waypoint

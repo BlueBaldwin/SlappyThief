@@ -22,14 +22,20 @@ public class InventoryItem : MonoBehaviour
     void OnAttach()
     {
         //shrink object into inventory and hide the empty slot mesh
-        gameObject.transform.localScale*= scaleFactor;
-        ab.anchor.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        if (ab.anchor.gameObject.GetComponentInParent<InventoryManager>() != null)
+        {
+            gameObject.transform.localScale *= scaleFactor;
+            ab.anchor.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 
     void OnDetach()
     {
         //scale object back up to world size, and show that the slot is now empty
-        gameObject.transform.localScale *= 1 / scaleFactor;
-        ab.anchor.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        if (ab.anchor.gameObject.GetComponentInParent<InventoryManager>() != null)
+        {
+            gameObject.transform.localScale *= 1 / scaleFactor;
+            ab.anchor.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
     }
 }

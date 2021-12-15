@@ -8,6 +8,7 @@ public class ShopperBehaviour : MonoBehaviour
     public List<ShopItem> ShopperCart;
     [SerializeField]
     float BaseMood;
+    [SerializeField]
     ShopItemTypes.SHOPITEMTYPE RequestedItemType;
     float Mood;
     [SerializeField]
@@ -37,10 +38,19 @@ public class ShopperBehaviour : MonoBehaviour
     InteractionBehaviour ib;
 
     [SerializeField]
+    Vector3 PickupBoxOffset;
+
+    [SerializeField]
     float BaseShakeTimer;
     float ShakeTimer;
     private void Start()
     {
+        if (ib == null)
+        {
+            ib = gameObject.AddComponent<InteractionBehaviour>();
+        }
+
+        RequestedItemType = ShopItemTypes.SHOPITEMTYPE.UNDEFINED;
         ShopperCart = new List<ShopItem>();
         BaseRequestTime *= Random.Range(1, 5);
         Timer = BaseRequestTime;
@@ -49,24 +59,23 @@ public class ShopperBehaviour : MonoBehaviour
         TargetItems = Random.Range(1, MaxCartSize);
         isInQueue = false;
         ib = GetComponent<InteractionBehaviour>();
-        if(ib == null)
-        {
-            ib = gameObject.AddComponent<InteractionBehaviour>();
-        }
+        
         ib.OnContactBegin += OnSlap;
         ib.OnGraspStay += OnShake;
         ShakeTimer = BaseShakeTimer;
         ShopperMovement = GetComponentInChildren<SkinnedMeshRenderer>().rootBone;
         PickupBox = gameObject.AddComponent<BoxCollider>();
         PickupBox.isTrigger = true;
-        PickupBox.center = ShopperMovement.localPosition;
+        PickupBox.center = ShopperMovement.localPosition + PickupBoxOffset;
         PickupBox.size = PickupRange;
+
+        ShopInfo = FindObjectOfType<ShopInfo>();
         
         
     }
     void OnSlap()
     {
-        if(ib.closestHoveringController.velocity.magnitude > SlapVelocity)
+        if(ib.closestHoveringController != null && ib.closestHoveringController.velocity.magnitude > SlapVelocity)
         {
             DropRandomItem();
         }
@@ -74,7 +83,7 @@ public class ShopperBehaviour : MonoBehaviour
 
     void OnShake()
     {
-        if(ib.graspingController.velocity.magnitude > SlapVelocity && ShakeTimer < 0)
+        if(ib.closestHoveringController != null && ib.graspingController.velocity.magnitude > SlapVelocity && ShakeTimer < 0)
         {
             DropRandomItem();
             ShakeTimer = BaseShakeTimer;
@@ -90,7 +99,7 @@ public class ShopperBehaviour : MonoBehaviour
     {
         if (ShopperCart.Count > 0)
         {
-            ShopperCart.RemoveAt(Random.Range(0, ShopperCart.Count));
+            RemoveItemFromCart(ShopperCart[Random.Range(0, ShopperCart.Count)]);
             Debug.Log(name + " Dropped an item!");
         }
     }
@@ -98,14 +107,20 @@ public class ShopperBehaviour : MonoBehaviour
     private void Update()
     {
         HandleItemRequests();
-        RenderCart();
+        if (ShopperCart.Count > 0)
+        {
+            RenderCart();
+        }
     }
 
     void RenderCart()
     {
         for (int i = 0; i < ShopperCart.Count; ++i)
         {
-            ShopperCart[i].gameObject.transform.position = transform.position + ((i + 1) * CartItemOffset);
+            ShopItem s = ShopperCart[i];
+            Transform t = s.gameObject.transform;
+            t.position = transform.position +  (t.forward *  ((i + 1) * CartItemOffset.x)) + (t.up * CartItemOffset.y)  + (t.right * CartItemOffset.z);
+            s.gameObject.transform.SetPositionAndRotation(t.position, s.GetBaseRotation());
         }
     }
 
@@ -127,23 +142,38 @@ public class ShopperBehaviour : MonoBehaviour
         }
     }
 
-    public void RequestItem(ShopItem s)
+    public void AddItemToCart(ShopItem s)
     {
-        RequestedItemType = s.ShopItemType;
-        Debug.Log(name + " requesting " + s.name);
+        ShopperCart.Add(s);
+        ShopInfo.RemoveShopItem(s);
+        RequestedItemType = ShopItemTypes.SHOPITEMTYPE.UNDEFINED;
+        s.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    public void RemoveItemFromCart(ShopItem s)
+    {
+        ShopperCart.Remove(s);
+        s.GetComponent<Rigidbody>().isKinematic = false;
+    }
+
+    public void RequestItem(ShopItemTypes.SHOPITEMTYPE s)
+    {
+        RequestedItemType = s;
+        Debug.Log(name + " requesting " + s.ToString());
+        isPendingItemRequest = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         ShopItem s;
-        if ((s = other.gameObject.GetComponentInParent<ShopItem>()) != null && s.ShopItemType == RequestedItemType)
+        if ((s = other.gameObject.GetComponentInParent<ShopItem>()) != null && s.ShopItemType == RequestedItemType && ShopInfo.AvailableItemsByType[(int)RequestedItemType].Contains(s) && !ShopperCart.Contains(s))
         {
-            if (ShopInfo.AvailableItemsByType[(int)RequestedItemType].Contains(s))
+            AnchorableBehaviour ab;
+            if ((ab = other.gameObject.GetComponentInParent<AnchorableBehaviour>()) != null && ab.isAttached)
             {
-                ShopperCart.Add(s);
-                ShopInfo.RemoveShopItem(s);
-                RequestedItemType = ShopItemTypes.SHOPITEMTYPE.UNDEFINED;
+                ab.Detach(); //prevents an object from being both in cart and in inventory
             }
+            AddItemToCart(s);          
         }
     }
 }
