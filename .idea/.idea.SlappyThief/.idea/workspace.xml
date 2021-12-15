@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12cce78a-7d12-4c0b-aa85-4d25cdc62073" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/ScoringSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/ScoringSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlappyThief/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlappyThief/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/NPCController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/NPCController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/GROBOLD SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/GROBOLD SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/GROBOLD SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/GROBOLD SDF.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Floor/FLOOR2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Floor/FLOOR2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Kris_Test.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Kris_Test/SampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Kris_Test/SampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TEST Scenes/ScottsNEWTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TEST Scenes/ScottsNEWTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/MessClothes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/MessClothes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +27,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Zac Scripts/ShopScripts/ShopperBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Leo Scripts/CustomerAIV2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/NPCController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/MessClothes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/LeapMotion/Core/Scripts/LeapServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/NPCManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20SKGHmffGSOdm9feE5IsnpFCf3" />
   <component name="ProjectViewState">
@@ -25,7 +41,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34991708" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34962717" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -35,9 +51,10 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -48,10 +65,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21742">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="21742" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -70,7 +87,8 @@
       <workItem from="1636032467672" duration="203000" />
       <workItem from="1636034362376" duration="14021000" />
       <workItem from="1639565592293" duration="281000" />
-      <workItem from="1639566631407" duration="305000" />
+      <workItem from="1639566631407" duration="2676000" />
+      <workItem from="1639577581078" duration="7576000" />
     </task>
     <servers />
   </component>
@@ -112,5 +130,9 @@
         <watch expression="timer" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

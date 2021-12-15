@@ -5,7 +5,7 @@ using UnityEngine;
 public class MessClothes : MonoBehaviour
 {
     public bool bTidyUpMess = false;
-
+    
     [SerializeField] GameObject tidyClothes;
     [SerializeField] GameObject messyClothes;
     [SerializeField] float timerDuration;
@@ -24,13 +24,18 @@ public class MessClothes : MonoBehaviour
         if(startTheTimer && !isMessy)
         {
             timer -= Time.deltaTime;
-            Debug.Log(timer);
+            // Debug.Log(timer);
             if (timer <= 0)
             {
                 MessClothing();
                 timer = timerDuration;
                 startTheTimer = false;
             }
+        }
+
+        if (isMessy)
+        {
+            MessPenalty();
         }
         if(bTidyUpMess)
         {
@@ -63,5 +68,11 @@ public class MessClothes : MonoBehaviour
         tidyClothes.gameObject.SetActive(true);
         isMessy = false;
         bTidyUpMess = false;
+    }
+
+    void MessPenalty()
+    {
+        ScoringSystem.totalScore -= Time.deltaTime;
+        Debug.Log(ScoringSystem.totalScore);
     }
 }

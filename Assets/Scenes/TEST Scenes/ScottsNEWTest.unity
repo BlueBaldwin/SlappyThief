@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 245109401}
   - component: {fileID: 245109400}
   - component: {fileID: 245109399}
+  - component: {fileID: 245109402}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -579,6 +580,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 22.065, y: -0.09, z: 0.027}
+--- !u!114 &245109402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245109398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f6d43148e29425e9494ccfd2360007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScore: 100
+  messClothesScript: {fileID: 664109058}
 --- !u!1 &256117853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1538,54 @@ Transform:
   m_Father: {fileID: 223433312}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10.3, y: -90, z: 0}
+--- !u!1 &664109057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664109059}
+  - component: {fileID: 664109058}
+  m_Layer: 0
+  m_Name: MessClothes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &664109058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664109057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57170d5d7f9d3be4fa1ae8e244e32b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bTidyUpMess: 0
+  tidyClothes: {fileID: 0}
+  messyClothes: {fileID: 0}
+  timerDuration: 0
+  isMessy: 0
+--- !u!4 &664109059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664109057}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5546803, y: 3.5381305, z: -4.646638}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &690183700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6671859048227742928, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
