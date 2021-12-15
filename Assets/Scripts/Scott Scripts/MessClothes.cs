@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class MessClothes : MonoBehaviour
 {
-    public static bool bTidyUpMess = false;
+    public bool bTidyUpMess = false;
 
     [SerializeField] GameObject tidyClothes;
     [SerializeField] GameObject messyClothes;
     [SerializeField] float timerDuration;
     private float timer;
     private bool startTheTimer;
+    public bool isMessy;
 
     private void Awake()
     {
         messyClothes.gameObject.SetActive(false);
         timer = timerDuration;
+        isMessy = false;
     }
     private void Update()
     {
@@ -50,12 +52,14 @@ public class MessClothes : MonoBehaviour
     {
         messyClothes.gameObject.SetActive(true);
         tidyClothes.gameObject.SetActive(false);
+        isMessy = true;
     }
 
     void TidyMessyClothes()
     {
         messyClothes.gameObject.SetActive(false);
         tidyClothes.gameObject.SetActive(true);
+        isMessy = false;
         bTidyUpMess = false;
     }
 }
