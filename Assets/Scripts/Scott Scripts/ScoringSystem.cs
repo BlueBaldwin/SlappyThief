@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,14 @@ using UnityEngine;
 public class ScoringSystem : MonoBehaviour
 {
 	// Start with 100 points (try and retain as many points as possible
-	public static float totalScore = 100.0f;
-	
+	public static float tidinessScore = 100.0f;
+	private static int totalScore;
+	private float serviceScore = 100.0f;
+	private float securityScore = 100.0f;
+
 	[SerializeField] private float queuePenaltyTimer;
 	[SerializeField] private float penaltyTimerReset = 8.0f;
+	[SerializeField] private TimeManager shopTime;
 
 	public ShopInfo myShopInfo;
 
@@ -24,14 +29,36 @@ public class ScoringSystem : MonoBehaviour
 			CustomerWaitingPenalty();
 		}
 		queuePenaltyTimer = penaltyTimerReset;
+
+		if (shopTime.shiftOver)
+		{
+			GetTotalScore();
+		}
 	}
 
 	void CustomerWaitingPenalty()
 	{
 		if (queuePenaltyTimer <= 0.0f)
 		{
-			totalScore -= 10;
+			serviceScore -= 10;
 		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.CompareTag("Thief"))
+		{
+			serviceScore -= 100;
+			//Debug.Log("thieeeeeeeef");
+		}
+	}
+
+	public int GetTotalScore()
+	{
+		float floatTotal = (securityScore + serviceScore + tidinessScore);
+		int totalScore = (int) floatTotal;
+
+		return totalScore;
 	}
 }
     

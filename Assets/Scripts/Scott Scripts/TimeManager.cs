@@ -14,7 +14,7 @@ public class TimeManager : MonoBehaviour
 
     private float minuteToRealTime = 0.1f;
     private float time;
-    private bool shiftOver = false;
+    public bool shiftOver = false;
 
 
     void Awake()
