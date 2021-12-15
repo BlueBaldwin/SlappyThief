@@ -44,8 +44,9 @@ GameObject:
   - component: {fileID: 1131503502851818909}
   - component: {fileID: 1131503502851818911}
   - component: {fileID: 1131503502851818910}
+  - component: {fileID: 7099107502639885589}
   m_Layer: 0
-  m_Name: KidBoy
+  m_Name: KidBoy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +136,39 @@ NavMeshAgent:
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1131503502851818910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248403459386055406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e70e82c3594cf548b3061aaff58e128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nma: {fileID: 0}
+  waypoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  startWaypoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  endWaypoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  stealingEndWaypoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  currentWaypoint: 0
+--- !u!114 &7099107502639885589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -683,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &345336185255163234
 Transform:
   m_ObjectHideFlags: 0
