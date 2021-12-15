@@ -708,7 +708,7 @@ MonoBehaviour:
   LeapOffset: {x: 0, y: -1, z: 2.5}
   IsFinished: 0
   IsLoaded: 0
-  Shirt: {fileID: 1223149569289875140, guid: f8190aa0f434ef84eb78f5598e689b30, type: 3}
+  ClothingItem: {fileID: 5824901123327839918, guid: e7bd4ee9e1c270641b5c2ef296315547, type: 3}
   FoldPoint: {fileID: 8640247688985532652, guid: 07465af2364805742842b2629d21d409, type: 3}
   FoldPointOffsets: {x: 0.55, y: 0.15, z: 0.4}
   ClothingOffset: {x: 0, y: 0, z: -0.65}
