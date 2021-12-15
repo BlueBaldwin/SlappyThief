@@ -45,7 +45,6 @@ public class NPCController : MonoBehaviour
         {
             //ChangePosition();                     // Too be created
         }
-
     }
     // Setting a new Destination initially and once called
     private void SetDestination()
