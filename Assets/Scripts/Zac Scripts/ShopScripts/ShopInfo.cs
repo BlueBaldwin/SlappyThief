@@ -9,7 +9,7 @@ public class ShopInfo : MonoBehaviour
     // Start is called before the first frame update
     private List<ShopItem> AvailableItems;
     public  List<ShopperBehaviour> ActiveShoppers;
-    private Queue<ShopperBehaviour> QueuedShoppers;
+    private  Queue<ShopperBehaviour> QueuedShoppers;
     public  List<List<ShopItem>> AvailableItemsByType;
     bool init = false;
 

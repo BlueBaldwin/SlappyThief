@@ -5,11 +5,10 @@ using UnityEngine;
 public class ScoringSystem : MonoBehaviour
 {
 	// Start with 100 points (try and retain as many points as possible
-	[SerializeField] public static float totalScore = 100.0f;
+	public static float totalScore = 100.0f;
+	
 	[SerializeField] private float queuePenaltyTimer;
 	[SerializeField] private float penaltyTimerReset = 8.0f;
-
-	[SerializeField] List<GameObject> MessyLocations;
 
 	public ShopInfo myShopInfo;
 
@@ -20,14 +19,11 @@ public class ScoringSystem : MonoBehaviour
 
 	void Update()
 	{
-		//for (int i = 0; i < myShopInfo.; i++)
-		//{
-			
-		//}
-		if (ShopperBehaviour.isInQueue)
+		for (int i = 0; i < myShopInfo.QueueLength(); i++)
 		{
 			CustomerWaitingPenalty();
 		}
+		queuePenaltyTimer = penaltyTimerReset;
 	}
 
 	void CustomerWaitingPenalty()
@@ -35,7 +31,6 @@ public class ScoringSystem : MonoBehaviour
 		if (queuePenaltyTimer <= 0.0f)
 		{
 			totalScore -= 10;
-			queuePenaltyTimer = penaltyTimerReset;
 		}
 	}
 }
