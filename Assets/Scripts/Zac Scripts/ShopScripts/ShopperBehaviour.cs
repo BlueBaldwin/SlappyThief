@@ -11,6 +11,9 @@ public class ShopperBehaviour : MonoBehaviour
     float BaseMood;
     [SerializeField]
     ShopItemTypes.SHOPITEMTYPE RequestedItemType;
+
+    [SerializeField] private GameObject thoughtBubble = null; // Added for bubble instantiation -- SB
+    
     float Mood;
     [SerializeField]
     float BaseRequestTime;

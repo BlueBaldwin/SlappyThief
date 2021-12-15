@@ -21,7 +21,7 @@ public class MessClothes : MonoBehaviour
     }
     private void Update()
     {
-        if(startTheTimer)
+        if(startTheTimer && !isMessy)
         {
             timer -= Time.deltaTime;
             Debug.Log(timer);
