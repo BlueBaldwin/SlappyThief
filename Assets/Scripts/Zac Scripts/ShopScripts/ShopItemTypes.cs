@@ -6,9 +6,14 @@ public static class ShopItemTypes
     public enum SHOPITEMTYPE
     {
         UNDEFINED = -1,
-        SHIRTA = 0,
-        SHIRTB = 1,
-        TROUSERS = 2,
+        SHIRTBLUE = 0,
+        SHIRTRED = 1,
+        SHIRTGREEN = 2,
+
+        TROUSERBLUE = 3,
+        TROUSERGREEN = 4, 
+
+        TROUSERBROWN = 5
     }
 
     public static SHOPITEMTYPE GetMax()

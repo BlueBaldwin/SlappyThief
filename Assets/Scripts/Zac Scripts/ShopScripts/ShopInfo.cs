@@ -7,6 +7,9 @@ using Leap.Unity;
 public class ShopInfo : MonoBehaviour
 {
     // Start is called before the first frame update
+
+
+
     private List<ShopItem> AvailableItems;
     public  List<ShopperBehaviour> ActiveShoppers;
     private  Queue<ShopperBehaviour> QueuedShoppers;

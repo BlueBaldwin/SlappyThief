@@ -1,80 +1,59 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 //\=================================================================================
 //\   When the thought bubble prefab is instantiated into the scene, it will randomly 
 //\   choose an item to display and be shadowed to the NPC's transform whilst locking rotation
 //\==================================================================================
+
+//reworked this script to work with BubbleSpriteManager.cs so that the list of sprites isnt copied into every character
+//Original script by Scott.
 public class ThoughtBubbles : MonoBehaviour
 {
-   [SerializeField] private Vector3 bubbleOffset;
-   [SerializeField] private GameObject[] clothingSelection = new GameObject[3];
    Transform Target;
-
+   SpriteRenderer BubbleRenderer;
+    SpriteRenderer ChildRenderer;
    private void Awake()
    {
-        // Moving the sprites position above the character
-        transform.localPosition = bubbleOffset;
+        BubbleRenderer = gameObject.GetComponent<SpriteRenderer>();
+        ChildRenderer =  gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
         Target = Camera.main.gameObject.transform;
+        SetRendererAndChildRendererEnabled(true);
    }
 
     public void Update()
     {
+         // Moving the sprites position above the character
+        transform.localPosition = BubbleSpriteManager.BubbleOffset;
         //ensure bubble always faces camera 
         gameObject.transform.LookAt(Target,Vector3.up);
     }
 
+    private void SetRendererAndChildRendererEnabled(bool b)
+    {
+        BubbleRenderer.enabled = b; 
+        ChildRenderer.enabled = b;
+    }
+
     public void Hide()
     {
-        //hide all components -- Zac
-        foreach(GameObject g in clothingSelection)
-        {
-            g.SetActive(false);
-        }
-        gameObject.SetActive(false);
+        //hide bubble & child icon 
+        SetRendererAndChildRendererEnabled(false);
     }
 
     public void Show(int i)
     {
-        //show required componenents -- Zac
-        gameObject.SetActive(true);
-        if (i >= 0 && i < clothingSelection.Length) 
-          {
-            clothingSelection[i].SetActive(true);
-          }
+        //show requested icon
+        if (i >= 0 && i < BubbleSpriteManager.ShopItemSprites.Count) 
+        {
+             ChildRenderer.sprite = BubbleSpriteManager.ShopItemSprites[i];
+             SetRendererAndChildRendererEnabled(true);   
+        }
         else
         {
             Debug.Log("Invalid Index Passed for Bubble");
-            Hide();
+            SetRendererAndChildRendererEnabled(false);
         }
     }
-
-   void OnTriggerEnter(Collider other)
-   {
-        //switch (other.tag)
-        //{
-        //   case "RedShirt":
-        //   {
-        //      Destroy(other.gameObject);
-        //      break;
-        //   }
-        //    case "BlueShirt":
-        //   {
-        //      Destroy(other.gameObject);
-        //      break;
-        //   }
-        //   case "Trousers":
-        //   {
-        //      Destroy(other.gameObject);
-        //      break;
-        //   }
-        //    default:
-        //    break;
-        //
-        Debug.Log("Triggered, add code here if needed"); //not sure what this method is for -- Zac
-   }
 }

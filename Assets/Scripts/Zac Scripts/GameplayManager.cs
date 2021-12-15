@@ -6,6 +6,12 @@ public class GameplayManager : MonoBehaviour
 {
     //class that handles the current gamestate and delegates information to the classes that need it.
 
+    [SerializeField]
+    private List<Sprite> ShopItemSprites;
+
+    [SerializeField]
+    private Vector3 ThoughtOffset;
+
 
     //submanagers
     [SerializeField]
@@ -18,6 +24,8 @@ public class GameplayManager : MonoBehaviour
 
     private void Start()
     {
+        BubbleSpriteManager.SetShopItemSprites(ShopItemSprites);
+        BubbleSpriteManager.SetBubbleOffset(ThoughtOffset);
         InvManager.Init(); //setup inventory 
         ShopInfo.PopulateLists();
     }
