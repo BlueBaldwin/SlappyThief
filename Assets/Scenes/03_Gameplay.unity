@@ -2431,12 +2431,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCList:
-  - {fileID: 7407378300580650910, guid: 25273e2a3052baf458bb23afbf0ab76b, type: 3}
-  - {fileID: 7095687844667216334, guid: f067ebc67d3fd4ead905bdcde7270458, type: 3}
-  - {fileID: 7095687844667216334, guid: 5f84a288c3c869d4d96300b3c8c2c811, type: 3}
-  - {fileID: 4767560758774812698, guid: b448285a0e23347369451edeb60d244b, type: 3}
-  - {fileID: 248403459386055406, guid: f17f6c7bea9d54044a8cff8df0c8e137, type: 3}
-  - {fileID: 248403459386055406, guid: 7a6ca68c33c9b6b4f93e3551deeb5742, type: 3}
+  - {fileID: 1882321888206128868, guid: 25273e2a3052baf458bb23afbf0ab76b, type: 3}
+  - {fileID: 5920132112234515755, guid: 71cfd7f260d450e4085a4e5d6df995b5, type: 3}
+  - {fileID: 3292910812494180161, guid: 5f84a288c3c869d4d96300b3c8c2c811, type: 3}
+  - {fileID: 1543474798048884820, guid: 7a6ca68c33c9b6b4f93e3551deeb5742, type: 3}
+  - {fileID: 7205937964471897634, guid: 08dabd264997048c180ce67d7cb73c35, type: 3}
+  - {fileID: 214448511134154086, guid: 3ce63ae4a0ed9be40a95ac16693362ea, type: 3}
+  - {fileID: 3991662085913798056, guid: ae5e9f0d1532730409a055c841505ddc, type: 3}
+  - {fileID: 6759642838517650480, guid: b448285a0e23347369451edeb60d244b, type: 3}
   inGameNPC: []
   spawnGap: 5
   spawnOrigin: {fileID: 809119977}

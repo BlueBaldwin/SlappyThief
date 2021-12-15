@@ -13,6 +13,18 @@ public class TillMinigame : Minigame
     [SerializeField]
     Transform Scanner;
     LineRenderer lr;
+    // [SerializeField]
+    // List<GameObject> Coins;
+    // [SerializeField]
+    // GameObject TillTray;
+
+    // Vector3 ClosedTill;
+    // Vector3 OpenTill;
+
+    // bool TakenMoney;
+    // bool CoinsSpawned;
+
+    //these were bugged so got rid of them for now 
 
     float ItemScale = 0.75f;
 

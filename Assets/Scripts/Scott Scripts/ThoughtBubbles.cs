@@ -19,7 +19,6 @@ public class ThoughtBubbles : MonoBehaviour
         BubbleRenderer = gameObject.GetComponent<SpriteRenderer>();
         ChildRenderer =  gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
         Target = Camera.main.gameObject.transform;
-        SetRendererAndChildRendererEnabled(true);
    }
 
     public void Update()
