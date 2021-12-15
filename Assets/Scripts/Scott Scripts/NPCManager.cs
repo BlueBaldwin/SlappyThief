@@ -6,6 +6,10 @@ using Random = UnityEngine.Random;
 
 public class NPCManager : MonoBehaviour
 {
+
+    [SerializeField]
+    ShopInfo s; //need this to make dyanmic spawning work with my script. -- zac
+
     // public Dictionary<string, Queue<GameObject>> npcDictionary;
     [SerializeField] private List<GameObject> NPCList = new List<GameObject>();
     [SerializeField] private List<GameObject> inGameNPC = new List<GameObject>();
@@ -13,6 +17,8 @@ public class NPCManager : MonoBehaviour
     [SerializeField] private Transform spawnOrigin;
     //[SerializeField] private int xSpawnBounds;
     //[SerializeField] private int zSpawnBounds;
+
+
 
     private bool bSpawnNewChar = false;
     private bool bStartSpawnTimer = false;
@@ -58,8 +64,11 @@ public class NPCManager : MonoBehaviour
         int characterSelection = Random.Range(1, NPCList.Count);
         // Vector2 radiusSpawn = Random.insideUnitCircle * 5;
         // spawnOrigin.transform.position += new Vector3(radiusSpawn.x, 0.0f, radiusSpawn.y);
-        Instantiate(NPCList[characterSelection], spawnOrigin.position, Quaternion.identity);
+        GameObject g = Instantiate(NPCList[characterSelection], spawnOrigin.position, Quaternion.identity);
         inGameNPC.Add(NPCList[characterSelection]);
+        Debug.Log(g.name);
+        Debug.Log("has sb: " +  g.GetComponent<ShopperBehaviour>() != null);
+        s.ActiveShoppers.Add(g.GetComponent<ShopperBehaviour>()); // need this --zac 
         NPCList.Remove(NPCList[characterSelection]);
         bStartSpawnTimer = true;
     }
@@ -67,6 +76,7 @@ public class NPCManager : MonoBehaviour
     {
         // Add character back to the list
         NPCList.Add(returningCharacter);
+        s.ActiveShoppers.Remove(returningCharacter.GetComponent<ShopperBehaviour>()); //need this -- zac
     }
 
     private void OnTriggerEnter(Collider other)

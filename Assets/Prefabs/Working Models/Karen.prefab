@@ -1110,6 +1110,7 @@ GameObject:
   - component: {fileID: 5526762097003200517}
   - component: {fileID: 8649318329495354388}
   - component: {fileID: 448410902742225853}
+  - component: {fileID: 1771296545554528524}
   m_Layer: 0
   m_Name: Karen
   m_TagString: Untagged
@@ -1190,6 +1191,31 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1771296545554528524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759642838517650480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf328ed6960361b4386dde01abb4c094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopperCart: []
+  BaseMood: 0
+  RequestedItemType: -1
+  BaseRequestTime: 2
+  MaxCartSize: 4
+  isInQueue: 0
+  isPendingItemRequest: 0
+  MoodDelta: 10
+  SlapVelocity: 100
+  CartItemOffset: {x: -2, y: 2, z: 0}
+  PickupRange: {x: 0.5, y: 0.5, z: 0.5}
+  PickupBoxOffset: {x: 0, y: 0.25, z: 0}
+  BaseShakeTimer: 1
 --- !u!1 &7015593584970074448
 GameObject:
   m_ObjectHideFlags: 0

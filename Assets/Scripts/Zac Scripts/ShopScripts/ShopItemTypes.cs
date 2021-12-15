@@ -7,17 +7,11 @@ public static class ShopItemTypes
     {
         UNDEFINED = -1,
         SHIRTBLACK = 0,
-        SHIRTRED,
-        SHIRTGREEN,
-        SHIRTWHITE,
-
-        SHIRTPURPLE,
-        SHIRTBLUE,
-
-        TROUSERBLUE,
-        TROUSERGREEN,
-        TROUSERBROWN,
-        TROUSERBLACK,
+        SHIRTRED = 1,
+        SHIRTGREEN = 2,
+        SHIRTWHITE = 3,
+        SHIRTPURPLE = 4,
+        SHIRTBLUE = 5,
     }
 
     public static SHOPITEMTYPE GetMax()

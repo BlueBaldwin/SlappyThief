@@ -2020,7 +2020,7 @@ MonoBehaviour:
   ShopperCart: []
   BaseMood: 100
   RequestedItemType: -1
-  BaseRequestTime: 4
+  BaseRequestTime: 1
   MaxCartSize: 4
   isInQueue: 0
   isPendingItemRequest: 0
