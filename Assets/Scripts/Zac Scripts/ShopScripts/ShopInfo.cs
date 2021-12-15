@@ -38,6 +38,7 @@ public class ShopInfo : MonoBehaviour
         {
             ShopperBehaviour s = QueuedShoppers.Dequeue();
             s.isInQueue = false;
+            return s;
         }
         return null;
     }

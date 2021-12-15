@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class TillMinigame : Minigame
 {
-
     [SerializeField]
-    Vector3 ItemOffset;
+    Transform ClothesSpawnPoint;
     ShopInfo ShopInfo;
     ShopperBehaviour CurrentShopper;
+    ShopItem CurrentItem;
     [SerializeField]
     Transform Scanner;
     LineRenderer lr;
@@ -36,7 +36,6 @@ public class TillMinigame : Minigame
         ClosedTill = TillTray.transform.position;
         OpenTill = TillTray.transform.position;
         OpenTill.y = 0;
-
     }
 
     public override bool CheckStartConditions()
@@ -52,12 +51,12 @@ public class TillMinigame : Minigame
 
     public override void Tick()
     {
-        ShootRay();
         ScanItems();
+        HandleSpawns();
     }
 
 
-    private void ShootRay()
+    private void ScanItems()
     {
         Vector3 RayStart = Scanner.position;
         Vector3 dir = Vector3.up;
@@ -67,14 +66,15 @@ public class TillMinigame : Minigame
         Vector3 RayEnd = RayStart + (dir * dist);
         if (Physics.Raycast(ray, out Hit, dist))
         {
-            ShopItem s;
             if (Hit.collider != null)
             {
                 RayEnd = Hit.point;
-                Debug.Log(Hit.collider.name);
-                if ((s = Hit.collider.gameObject.GetComponent<ShopItem>()) != null && CurrentShopper.ShopperCart.Contains(s))
+                ShopItem s;
+                Debug.Log("SCANNED" + Hit.collider.name);
+                if ((s=Hit.collider.gameObject.GetComponentInParent<ShopItem>()) != null && s == CurrentItem.gameObject.GetComponent<ShopItem>())
                 {
-                    CurrentShopper.ShopperCart.Remove(s);                   
+                    SpawnedObjects.Add(CurrentItem.gameObject);
+                    CurrentItem = null;
                 }
             }        
         }
@@ -82,69 +82,35 @@ public class TillMinigame : Minigame
         lr.SetPosition(1, RayEnd);
     }
 
-    private void ScanItems()
+    private void HandleSpawns()
     {
-        if (CurrentShopper == null)
+    
+        if(CurrentShopper == null)
         {
             CurrentShopper = ShopInfo.DequeueShopper();
-            if (CurrentShopper != null)
+            if(CurrentShopper == null)
             {
-                TakenMoney = false;
-                for (int i = 0; i < CurrentShopper.ShopperCart.Count; ++i)
-                {
-                    ShopItem s = CurrentShopper.ShopperCart[i];
-                    s.gameObject.transform.parent = gameObject.transform;
-                    s.gameObject.transform.localPosition = ItemOffset * i;
-                    SpawnedObjects.Add(s.gameObject);
-                }
-            }
-            else
-            {
-                //lr.enabled = false;
-                TillTray.transform.position = ClosedTill;
+                IsFinished = true;
+                IsLoaded = false;
+                Unload();
             }
         }
-        else
-        {
-            if (CurrentShopper.ShopperCart.Count == 0)
-            {
-                //take money
-                if (!TakenMoney)
-                {
-                    //open till
-                    TillTray.transform.localPosition = OpenTill;
-                    Bounds bounds = TillTray.GetComponent<BoxCollider>().bounds;
-                    Coins = new List<GameObject>();
-                    if (!CoinsSpawned)
-                    {
-                        for (int i = 0; i < Random.Range(0, 5); ++i)
-                        {
-                            GameObject g = Instantiate(Coin, Scanner.position + ItemOffset * i, Scanner.rotation);
-                            Coins.Add(g);
-                            SpawnedObjects.Add(g);
-                        }
-                        CoinsSpawned = true;
-                    }
-                    else
-                    {
 
-                        foreach (GameObject Coin in Coins)
-                        {
-                            if (bounds.Contains(Coin.transform.position))
-                            {
-                                Coins.Remove(Coin);
-                            }
-                        }
-                        if (Coins.Count == 0) TakenMoney = true;
-                    }
-                }
-                else
-                {
-                    //go to next shopper in queue TODO: give shopper waypoint to exit?
-                    CurrentShopper = null;
-                }
-            }
+        if(CurrentItem == null && CurrentShopper.ShopperCart.Count > 0)
+        {
+            CurrentItem = CurrentShopper.ShopperCart[0];
+            CurrentShopper.ShopperCart.Remove(CurrentItem);
+            CurrentItem.transform.position = ClothesSpawnPoint.position;
+            Rigidbody rb = CurrentItem.gameObject.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            rb.useGravity = true;
         }
+
+        if(CurrentItem == null)
+        {
+            CurrentShopper = null;
+        }
+
     }
 
 }

@@ -8,6 +8,7 @@ public class ShopItem : MonoBehaviour
 
     [SerializeField]
     public ShopItemTypes.SHOPITEMTYPE ShopItemType;
+    bool Hanging;
 
     Vector3 ColliderSize = new Vector3(5, 10, 3);
     Quaternion BaseRotation;
@@ -19,11 +20,14 @@ public class ShopItem : MonoBehaviour
 
     private void Start()
     {
+        Hanging = true;
         BaseRotation = transform.rotation;
         //ensure we can interact with shop items 
         if(gameObject.GetComponent<InteractionBehaviour>() == null){
              InteractionBehaviour ib = gameObject.AddComponent<InteractionBehaviour>(); //should automatically add a rigidbody too
-             ib.manager = FindObjectOfType<InteractionManager>();
+            ib.manager = FindObjectOfType<InteractionManager>();
+            ib.OnContactBegin += Contact;
+            GetComponent<Rigidbody>().useGravity = false;
 
         }
         if(gameObject.GetComponent<Collider>() == null)
@@ -47,5 +51,14 @@ public class ShopItem : MonoBehaviour
             it.scaleFactor = 0.75f;
         }
 
+    }
+
+    void Contact()
+    {
+        if (Hanging)
+        {
+            Hanging = false;
+            GetComponent<Rigidbody>().useGravity = true;
+        }
     }
 }

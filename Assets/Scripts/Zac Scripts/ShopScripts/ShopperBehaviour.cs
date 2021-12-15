@@ -149,9 +149,14 @@ public class ShopperBehaviour : MonoBehaviour
         for (int i = 0; i < ShopperCart.Count; ++i)
         {
             ShopItem s = ShopperCart[i];
+            AnchorableBehaviour a; 
+            if ((a = s.GetComponent<AnchorableBehaviour>()).isAttached)
+            {
+                a.Detach();
+            }
             Transform t = s.gameObject.transform;
-            t.position = transform.position +  (t.forward *  ((i + 1) * CartItemOffset.x)) + (t.up * CartItemOffset.y)  + (t.right * CartItemOffset.z);
-            s.gameObject.transform.SetPositionAndRotation(t.position, s.GetBaseRotation());
+            t.position =  Vector3.Lerp(t.transform.position,transform.position +  (t.forward *  ((i + 1) * CartItemOffset.x)) + (t.up * CartItemOffset.y)  + (t.right * CartItemOffset.z),0.8f);
+            s.gameObject.transform.rotation = s.GetBaseRotation();
         }
     }
 
@@ -178,13 +183,22 @@ public class ShopperBehaviour : MonoBehaviour
         ShopperCart.Add(s);
         ShopInfo.RemoveShopItem(s);
         RequestedItemType = ShopItemTypes.SHOPITEMTYPE.UNDEFINED;
-        s.GetComponent<Rigidbody>().isKinematic = true;
+        Rigidbody r = s.GetComponent<Rigidbody>();
+        r.isKinematic = true;
+        r.useGravity = false;
+        r.velocity = Vector3.zero;
+        s.GetComponent<AnchorableBehaviour>().Detach();
+
     }
 
     public void RemoveItemFromCart(ShopItem s)
     {
         ShopperCart.Remove(s);
-        s.GetComponent<Rigidbody>().isKinematic = false;
+        Rigidbody r = s.GetComponent<Rigidbody>();
+        r.isKinematic = false;
+        r.useGravity = true;
+        r.velocity = Vector3.zero;
+
     }
 
     public void RequestItem(ShopItemTypes.SHOPITEMTYPE s)
