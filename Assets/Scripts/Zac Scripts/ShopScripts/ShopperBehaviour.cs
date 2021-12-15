@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Leap.Unity.Interaction;
+using UnityEngine.AI;
 
 public class ShopperBehaviour : MonoBehaviour
 {
@@ -45,6 +46,11 @@ public class ShopperBehaviour : MonoBehaviour
     [SerializeField]
     float BaseShakeTimer;
     float ShakeTimer;
+
+    NavMeshAgent nma;
+    
+
+    
     private void Start()
     { 
 
@@ -72,7 +78,10 @@ public class ShopperBehaviour : MonoBehaviour
         isInQueue = false;
         
         ib.OnContactBegin += OnSlap;
+        ib.OnGraspBegin += OnGraspBegin;
+        ib.OnGraspEnd += OnGraspEnd;
         ib.OnGraspStay += OnShake;
+
         ShakeTimer = BaseShakeTimer;
         ShopperMovement = GetComponentInChildren<SkinnedMeshRenderer>().rootBone;
         PickupBox = gameObject.AddComponent<BoxCollider>();
@@ -80,10 +89,21 @@ public class ShopperBehaviour : MonoBehaviour
         PickupBox.center = ShopperCollider.center = ShopperMovement.localPosition + PickupBoxOffset;
         PickupBox.size = PickupRange;
 
+        nma = gameObject.GetComponent<NavMeshAgent>();
         ShopInfo = FindObjectOfType<ShopInfo>();
         
-        
     }
+    void OnGraspBegin()
+    {
+        nma.enabled = false;
+        //navmesh does not like being taken hostage 
+    }
+
+    void OnGraspEnd()
+    {
+        nma.enabled = true;
+    }
+
     void OnSlap()
     {
         if(ib.closestHoveringController != null && ib.closestHoveringController.velocity.magnitude > SlapVelocity)
