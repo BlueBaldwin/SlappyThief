@@ -7223,7 +7223,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 1465539080}
     m_Modifications:
     - target: {fileID: 1865881532540001322, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
-      propertyPath: FoldPoint
+      propertyPath: ClothingItem
       value: 
       objectReference: {fileID: 5824901123327839918, guid: e7bd4ee9e1c270641b5c2ef296315547, type: 3}
     - target: {fileID: 1865881532540001322, guid: 616e20aa9989ec545baa617a0ee81f7d, type: 3}
