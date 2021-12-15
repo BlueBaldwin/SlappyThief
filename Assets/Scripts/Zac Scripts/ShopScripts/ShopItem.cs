@@ -53,6 +53,9 @@ public class ShopItem : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision other) {
+        Contact();
+    }
     void Contact()
     {
         if (Hanging)

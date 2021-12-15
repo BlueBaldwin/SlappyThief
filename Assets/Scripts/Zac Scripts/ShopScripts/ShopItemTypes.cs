@@ -6,10 +6,14 @@ public static class ShopItemTypes
     public enum SHOPITEMTYPE
     {
         UNDEFINED = -1,
-        SHIRTBLUE = 0,
+        SHIRTBLACK = 0,
         SHIRTRED,
         SHIRTGREEN,
         SHIRTWHITE,
+
+        SHIRTPURPLE,
+        SHIRTBLUE,
+
         TROUSERBLUE,
         TROUSERGREEN,
         TROUSERBROWN,
