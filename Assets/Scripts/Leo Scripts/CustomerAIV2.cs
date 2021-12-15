@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
 public class CustomerAIV2 : MonoBehaviour
 {
     #region SerializeFields
@@ -21,11 +20,13 @@ public class CustomerAIV2 : MonoBehaviour
     Transform[] endWaypoint;
 
     [SerializeField]
+    Transform[] stealingEndWaypoint;
+
+    [SerializeField]
     int currentWaypoint;
 
     [SerializeField]
     IEnumerator coroutine;
-
     #endregion
 
     #region Variables
@@ -33,11 +34,17 @@ public class CustomerAIV2 : MonoBehaviour
 
     private bool isCustomerInShop = false;
 
+    private bool isCustomerAThief;
+
     int waypointIndex;
 
     int endWaypointIndex;
 
     int inShopWaypointIndex;
+
+    int stealingWaypointIndex;
+
+    int numberAssignment;
 
     Vector3 target;
     #endregion
@@ -50,6 +57,15 @@ public class CustomerAIV2 : MonoBehaviour
         nma = this.GetComponent<NavMeshAgent>();    //waypoints will be used to find where the customer will go to next
         StartCustomerMovement();
         isCustomerInShop = true;
+        numberAssignment = Random.Range(0, 4);
+
+		if (numberAssignment == 0 || numberAssignment == 1) {
+            isCustomerAThief = false;
+            Debug.Log("Customer is not a thief");
+		} else if (numberAssignment == 2 || numberAssignment == 3) {
+            isCustomerAThief = true;
+            Debug.Log("Customer is a thief");
+		}
     }
 
     // Update is called once per frame
@@ -89,7 +105,7 @@ public class CustomerAIV2 : MonoBehaviour
             nma.SetDestination(waypoint[currentWaypoint].transform.position);   //set the customers position to a waypoint
             inShopWaypointIndex++;
             if (inShopWaypointIndex == 5) {                                     //when the inShopWaypointIndex is equal to 5
-                isCustomerInShop = false;                                       //then set the isCustomerInShop bool to false to get the customer to use the EndCustomerMovement function
+                isCustomerInShop = false;
 			}
         }
     }
@@ -102,9 +118,12 @@ public class CustomerAIV2 : MonoBehaviour
 
         if (isCustomerInShop == true) {
             CustomerMovement();                 //jump into the customermovement function and move the customer
-        } else if (isCustomerInShop == false) {
+        } else if (isCustomerInShop == false && isCustomerAThief == false) {
             EndCustomerMovement();
+		} else if (isCustomerInShop == false && isCustomerAThief == true) {
+            StealingCustomerMovement();
 		}
+
 	}
 
     IEnumerator EndTimer() {
@@ -112,20 +131,38 @@ public class CustomerAIV2 : MonoBehaviour
         Debug.Log("Customer is waiting to leave the store");
     }
 
+    IEnumerator StealingTimer() {
+        yield return new WaitForSeconds(5);
+        Debug.Log("This Customer is a thief and is stealing");
+	}
+
     void EndCustomerMovement() {               //function for when the customer has reached all the instoremovement waypoints, they will go to the end waypoint
-		if (isCustomerInShop == false) {
+		if (isCustomerInShop == false && isCustomerAThief == false) {
             target = endWaypoint[endWaypointIndex].position;
             nma.SetDestination(target);
-        }
+		} else if (isCustomerInShop == false && isCustomerAThief == true) {
+            StealingCustomerMovement();
+		}
     }
 
     void EndWaypointIteration() {
         endWaypointIndex++;
-        if (endWaypointIndex == 1) {
+        if (endWaypointIndex == 2) {
             //Minigame logic?
             StartCoroutine(EndTimer());
-            return;
         }
+    }
+
+    void StealingCustomerMovement() {
+            target = stealingEndWaypoint[stealingWaypointIndex].position;
+            nma.SetDestination(target);
+	}
+
+    void StealingCustomerIteration() {
+        stealingWaypointIndex++;
+		if (stealingWaypointIndex == stealingEndWaypoint.Length) {
+            StealingTimer();
+		}
     }
     #endregion 
 }
@@ -148,6 +185,12 @@ public class CustomerAIV2 : MonoBehaviour
  * it will wait for 5 seconds
  * throw itself into the player movement function and have the player
  * move to a random location
+ * 
+ * at the start of the game, randomly assign the customer a number from 1-2
+ * if the number is 1 then they are a normal customer and if it is 2 they are assigned to be a thief
+ * if their assigned number is 1 they're a normal customer if their assigned number 2 they are a thief
+ * so once the main customer movement loop ends, they will either steal (run out the store) or buy
+ * (they will go to the counter)
  */
 
 
