@@ -1875,6 +1875,38 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.16963951
       objectReference: {fileID: 0}
+    - target: {fileID: 6856591974071314434, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: ThoughtOffset.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856591974071314434, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: ShopItemSprites.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856591974071314434, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: ShopItemSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8cc65fe0e44ece7479833a23b8f3ef44, type: 3}
+    - target: {fileID: 6856591974071314434, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: ShopItemSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 488a943ed6f053d4785d48b1b3cfc0d0, type: 3}
+    - target: {fileID: 6856591974071314434, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: ShopItemSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: e3e669e09367a7c42a246bf529ef6fcc, type: 3}
+    - target: {fileID: 6856591974071314434, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: ShopItemSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: de850ccb941a3f84da5a1a32f3ed62bf, type: 3}
+    - target: {fileID: 6856591974071314434, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: ShopItemSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 79744c2fba9a3a44e83549ccf641aa1d, type: 3}
+    - target: {fileID: 6856591974071314434, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
+      propertyPath: ShopItemSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c494130fbe05bd43b6daa56ad109205, type: 3}
     - target: {fileID: 6856591974071314435, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2405,10 +2437,6 @@ MonoBehaviour:
   - {fileID: 4767560758774812698, guid: b448285a0e23347369451edeb60d244b, type: 3}
   - {fileID: 248403459386055406, guid: f17f6c7bea9d54044a8cff8df0c8e137, type: 3}
   - {fileID: 248403459386055406, guid: 7a6ca68c33c9b6b4f93e3551deeb5742, type: 3}
-  - {fileID: 4567471785558261326, guid: efaba65fca6c94aea9a667f64408e978, type: 3}
-  - {fileID: 4567471785558261326, guid: 08dabd264997048c180ce67d7cb73c35, type: 3}
-  - {fileID: 8407108313567948120, guid: a9016ec81226a466bbdbddece6e18e10, type: 3}
-  - {fileID: 3208868493393300169, guid: 029d80e5d64751e478cb775a854356c8, type: 3}
   inGameNPC: []
   spawnGap: 5
   spawnOrigin: {fileID: 809119977}

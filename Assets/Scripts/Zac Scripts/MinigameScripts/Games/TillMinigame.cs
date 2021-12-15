@@ -13,17 +13,6 @@ public class TillMinigame : Minigame
     [SerializeField]
     Transform Scanner;
     LineRenderer lr;
-    [SerializeField]
-    GameObject Coin;
-    List<GameObject> Coins;
-    [SerializeField]
-    GameObject TillTray;
-
-    Vector3 ClosedTill;
-    Vector3 OpenTill;
-
-    bool TakenMoney;
-    bool CoinsSpawned;
 
     float ItemScale = 0.75f;
 
@@ -35,9 +24,6 @@ public class TillMinigame : Minigame
         lr.startWidth = 0.05f;
         lr.startColor = Color.red;
         ShopInfo = FindObjectOfType<GameplayManager>().ShopInfo;
-        ClosedTill = TillTray.transform.position;
-        OpenTill = TillTray.transform.position;
-        OpenTill.y = 0;
     }
 
     public override bool CheckStartConditions()
