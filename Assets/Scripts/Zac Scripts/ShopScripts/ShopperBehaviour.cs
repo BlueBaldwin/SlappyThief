@@ -25,6 +25,8 @@ public class ShopperBehaviour : MonoBehaviour
     BoxCollider PickupBox;
     ShopInfo ShopInfo;
 
+    GameObject RagdollObject;
+
     Transform ShopperMovement;
 
     [SerializeField]
@@ -48,7 +50,8 @@ public class ShopperBehaviour : MonoBehaviour
     float ShakeTimer;
 
     NavMeshAgent nma;
-    
+
+    ThoughtBubbles BubbleComponent;
 
     
     private void Start()
@@ -63,6 +66,8 @@ public class ShopperBehaviour : MonoBehaviour
         {
             ShopperCollider = gameObject.AddComponent<CapsuleCollider>();
         }
+
+        RagdollObject = gameObject.transform.GetChild(0).gameObject;
 
         ShopperCollider.isTrigger = false;
         ShopperCollider.radius = 0.125f;
@@ -91,17 +96,22 @@ public class ShopperBehaviour : MonoBehaviour
 
         nma = gameObject.GetComponent<NavMeshAgent>();
         ShopInfo = FindObjectOfType<ShopInfo>();
+        BubbleComponent = GetComponentInChildren<ThoughtBubbles>();
         
     }
     void OnGraspBegin()
     {
+        //navmesh does not like being taken hostage, so turn it off and enable ragdolls
         nma.enabled = false;
-        //navmesh does not like being taken hostage 
+        RagdollObject.SetActive(true);
+        
     }
 
     void OnGraspEnd()
     {
+        //disable ragdolls and enable navmesh
         nma.enabled = true;
+        RagdollObject.SetActive(false);
     }
 
     void OnSlap()
@@ -140,11 +150,11 @@ public class ShopperBehaviour : MonoBehaviour
         HandleItemRequests();
         if(RequestedItemType != ShopItemTypes.SHOPITEMTYPE.UNDEFINED)
         {
-            //TODO: draw speech bubble 
+            BubbleComponent.Show((int)RequestedItemType);
         }
         else
         {
-            //TODO: hide speechbubble
+            BubbleComponent.Hide();
         }
 
         if (ShopperCart.Count > 0)

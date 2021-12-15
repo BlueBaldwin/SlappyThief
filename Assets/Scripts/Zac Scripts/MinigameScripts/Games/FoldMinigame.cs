@@ -58,6 +58,11 @@ public class FoldMinigame : Minigame
     {
         base.Load();
         GameObject g = Instantiate(ClothingItem, gameObject.transform);
+        ShopItem s;
+        if ((s = g.GetComponent<ShopItem>()) != null)
+        {
+            Destroy(s); //dont want our representation of the different shop items to actually have shopitem behaviour.             
+        }
         SpawnedObjects.Add(g);
         g.transform.position += ClothingOffset;
 

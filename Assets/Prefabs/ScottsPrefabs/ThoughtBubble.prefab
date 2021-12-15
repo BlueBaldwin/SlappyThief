@@ -25,16 +25,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216134918291797288}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 4.6986103, y: 4.23, z: -7.3099995}
-  m_LocalScale: {x: 0.15000013, y: 0.15, z: 0.15000013}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 3371408732899730631}
   - {fileID: 7389885943816989052}
   - {fileID: 8265987387572874648}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &2263054299291179021
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,8 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c1d0fd9fec1b348a38e0fe9b30b2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characeter: {fileID: 0}
-  bubbleOffset: {x: 0, y: 0, z: 0}
+  bubbleOffset: {x: 0, y: 1, z: 0}
   clothingSelection:
   - {fileID: 3665942038540086372}
   - {fileID: 258314925916117694}

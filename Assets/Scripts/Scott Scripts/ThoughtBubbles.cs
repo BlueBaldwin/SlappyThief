@@ -11,51 +11,70 @@ using Random = UnityEngine.Random;
 //\==================================================================================
 public class ThoughtBubbles : MonoBehaviour
 {
-   [SerializeField] private Transform characeter;
    [SerializeField] private Vector3 bubbleOffset;
    [SerializeField] private GameObject[] clothingSelection = new GameObject[3];
+   Transform Target;
 
-   private int chosenIndex;
    private void Awake()
    {
-      // Randomly selecting an item to request
-      chosenIndex = Random.Range(0, clothingSelection.Length);
+        // Moving the sprites position above the character
+        transform.localPosition = bubbleOffset;
+        Target = Camera.main.gameObject.transform;
    }
 
-   private void Start()
-   {
-      clothingSelection[chosenIndex].SetActive(true);
-      // ==== Set the Chosen Characters index here ====
-      // characeter = NPCManager.inGameNPC[].transform;
-   }
+    public void Update()
+    {
+        //ensure bubble always faces camera 
+        gameObject.transform.LookAt(Target,Vector3.up);
+    }
 
-   private void LateUpdate()
-   {
-      // Moving the sprites position above the character
-      transform.position = (characeter.transform.position + bubbleOffset) ;
-   }
+    public void Hide()
+    {
+        //hide all components -- Zac
+        foreach(GameObject g in clothingSelection)
+        {
+            g.SetActive(false);
+        }
+        gameObject.SetActive(false);
+    }
+
+    public void Show(int i)
+    {
+        //show required componenents -- Zac
+        gameObject.SetActive(true);
+        if (i >= 0 && i < clothingSelection.Length) 
+          {
+            clothingSelection[i].SetActive(true);
+          }
+        else
+        {
+            Debug.Log("Invalid Index Passed for Bubble");
+            Hide();
+        }
+    }
 
    void OnTriggerEnter(Collider other)
    {
-      switch (other.tag)
-      {
-         case "RedShirt":
-         {
-            Destroy(other.gameObject);
-            break;
-         }
-          case "BlueShirt":
-         {
-            Destroy(other.gameObject);
-            break;
-         }
-         case "Trousers":
-         {
-            Destroy(other.gameObject);
-            break;
-         }
-          default:
-          break;
-      }
+        //switch (other.tag)
+        //{
+        //   case "RedShirt":
+        //   {
+        //      Destroy(other.gameObject);
+        //      break;
+        //   }
+        //    case "BlueShirt":
+        //   {
+        //      Destroy(other.gameObject);
+        //      break;
+        //   }
+        //   case "Trousers":
+        //   {
+        //      Destroy(other.gameObject);
+        //      break;
+        //   }
+        //    default:
+        //    break;
+        //
+        Debug.Log("Triggered, add code here if needed"); //not sure what this method is for -- Zac
    }
 }
