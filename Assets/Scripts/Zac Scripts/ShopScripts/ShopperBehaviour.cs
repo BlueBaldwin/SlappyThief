@@ -36,6 +36,8 @@ public class ShopperBehaviour : MonoBehaviour
     Vector3 PickupRange;
 
     InteractionBehaviour ib;
+    CapsuleCollider ShopperCollider;
+
 
     [SerializeField]
     Vector3 PickupBoxOffset;
@@ -44,11 +46,21 @@ public class ShopperBehaviour : MonoBehaviour
     float BaseShakeTimer;
     float ShakeTimer;
     private void Start()
-    {
-        if (ib == null)
+    { 
+
+        if ((ib = GetComponent<InteractionBehaviour>())==null)
         {
             ib = gameObject.AddComponent<InteractionBehaviour>();
         }
+
+        if ((ShopperCollider = GetComponent<CapsuleCollider>()) == null)
+        {
+            ShopperCollider = gameObject.AddComponent<CapsuleCollider>();
+        }
+
+        ShopperCollider.isTrigger = false;
+        ShopperCollider.radius = 0.125f;
+        ShopperCollider.height = 0.5f;
 
         RequestedItemType = ShopItemTypes.SHOPITEMTYPE.UNDEFINED;
         ShopperCart = new List<ShopItem>();
@@ -58,7 +70,6 @@ public class ShopperBehaviour : MonoBehaviour
         Mood = BaseMood;
         TargetItems = Random.Range(1, MaxCartSize);
         isInQueue = false;
-        ib = GetComponent<InteractionBehaviour>();
         
         ib.OnContactBegin += OnSlap;
         ib.OnGraspStay += OnShake;
@@ -66,7 +77,7 @@ public class ShopperBehaviour : MonoBehaviour
         ShopperMovement = GetComponentInChildren<SkinnedMeshRenderer>().rootBone;
         PickupBox = gameObject.AddComponent<BoxCollider>();
         PickupBox.isTrigger = true;
-        PickupBox.center = ShopperMovement.localPosition + PickupBoxOffset;
+        PickupBox.center = ShopperCollider.center = ShopperMovement.localPosition + PickupBoxOffset;
         PickupBox.size = PickupRange;
 
         ShopInfo = FindObjectOfType<ShopInfo>();
