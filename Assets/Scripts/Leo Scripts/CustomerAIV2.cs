@@ -56,6 +56,7 @@ public class CustomerAIV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        theft.gameObject.SetActive(false);
         waitTimer = true;                           //wait timer is set to true
         nma = this.GetComponent<NavMeshAgent>();    //waypoints will be used to find where the customer will go to next
         StartCustomerMovement();
@@ -160,6 +161,7 @@ public class CustomerAIV2 : MonoBehaviour
     void StealingCustomerMovement() {
             target = stealingEndWaypoint[stealingWaypointIndex].position;
             nma.SetDestination(target);
+            theft.gameObject.SetActive(true);
 	}
 
     void StealingCustomerIteration() {
