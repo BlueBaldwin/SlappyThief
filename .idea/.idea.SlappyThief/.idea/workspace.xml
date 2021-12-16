@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12cce78a-7d12-4c0b-aa85-4d25cdc62073" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Leo Scripts/CustomerAIV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Leo Scripts/CustomerAIV2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SlappyThief/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlappyThief/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Working Models/AdultMan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Working Models/AdultMan.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,12 +19,14 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/TimeManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ThoughtBubbles.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/ThoughtBubbles.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/MessClothes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/TimeUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/SceneIndex.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ThoughtBubbles.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Zac Scripts/ShopScripts/ShopInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/NPCManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -66,10 +69,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="31423">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="31423" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
