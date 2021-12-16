@@ -54,6 +54,11 @@ public class CustomerAIV2 : MonoBehaviour
 
     #region Functions
     // Start is called before the first frame update
+    void Awake()
+    {
+        theft.gameObject.SetActive(false);
+    }
+    
     void Start()
     {
         theft.gameObject.SetActive(false);
