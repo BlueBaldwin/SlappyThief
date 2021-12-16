@@ -2598,11 +2598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1772381910800592745, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: BaseOffsetX
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1772381910800592745, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: BaseOffsetZ
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1772381910800592745, guid: 7005bf51b1eeaf340a6d79f2c7abd16a, type: 3}
       propertyPath: HandProcessor
