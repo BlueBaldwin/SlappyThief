@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12cce78a-7d12-4c0b-aa85-4d25cdc62073" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/ScoringSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/ScoringSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SlappyThief/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlappyThief/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/GROBOLD SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/GROBOLD SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/GROBOLD SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/GROBOLD SDF.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Floor/FLOOR2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Floor/FLOOR2.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Kris_Test.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Kris_Test/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Kris_Test/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TEST Scenes/ScottsNEWTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TEST Scenes/ScottsNEWTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/MessClothes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scott Scripts/MessClothes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,13 +16,24 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/TimeManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/MessClothes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/TimeUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/SceneIndex.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Zac Scripts/ShopScripts/ShopInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/NPCManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/scottbaldwin/Dev/SlappyThief/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/TimeManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Zac Scripts/ShopScripts/ShopperBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Leo Scripts/CustomerAIV2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/NPCController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/MessClothes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/LeapMotion/Core/Scripts/LeapServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/ScoringSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scott Scripts/NPCManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20SKGHmffGSOdm9feE5IsnpFCf3" />
   <component name="ProjectViewState">

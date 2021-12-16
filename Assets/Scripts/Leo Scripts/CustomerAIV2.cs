@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,8 @@ public class CustomerAIV2 : MonoBehaviour
     NavMeshAgent nma = null;
     //holds a pointer to the customers nma(nav mesh agent)
 
+    [SerializeField]
+    GameObject theft = null;
     [SerializeField]
     GameObject[] waypoint;
 
