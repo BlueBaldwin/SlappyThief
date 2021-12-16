@@ -102,8 +102,7 @@ public class TillMinigame : Minigame
             CurrentItem = CurrentShopper.ShopperCart[0];
             CurrentShopper.ShopperCart.Remove(CurrentItem);
             CurrentItem.transform.localScale *= ItemScale;
-            CurrentItem.GetComponent<BoxCollider>().size.Scale(Vector3.one * 1.25f);
-            }
+            CurrentItem.GetComponent<BoxCollider>().size.Scale(Vector3.one * 1.25f);           
             SpawnItem(CurrentItem);
         }
 
@@ -137,3 +136,4 @@ public class TillMinigame : Minigame
     }
 
 }
+
