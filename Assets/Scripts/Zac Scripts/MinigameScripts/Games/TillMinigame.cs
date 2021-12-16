@@ -102,6 +102,7 @@ public class TillMinigame : Minigame
             CurrentItem = CurrentShopper.ShopperCart[0];
             CurrentShopper.ShopperCart.Remove(CurrentItem);
             CurrentItem.transform.localScale *= ItemScale;
+            CurrentItem.GetComponent<BoxCollider>().size.Scale(Vector3.one * 1.25f);           
             SpawnItem(CurrentItem);
         }
 
@@ -119,6 +120,7 @@ public class TillMinigame : Minigame
         rb.velocity = Vector3.zero;
         rb.isKinematic = false;
         rb.useGravity = true;
+        rb.mass = 1000000;
     }
 
     private void OnTriggerExit(Collider other)
@@ -134,3 +136,4 @@ public class TillMinigame : Minigame
     }
 
 }
+
