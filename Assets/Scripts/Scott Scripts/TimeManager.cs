@@ -6,6 +6,8 @@ using System;
 public class TimeManager : MonoBehaviour
 {
     // Setting the in Game time Action mapping
+    [SerializeField]
+    SceneIndex s;
     public static Action OnMinuteChanged;
     public static Action OnHourChanged;
 
@@ -33,10 +35,14 @@ public class TimeManager : MonoBehaviour
             Minute++;
             // If not null then invoke it (Action)
             OnMinuteChanged?.Invoke();
-            if (Minute >= 60)
+            if (Minute >= 59)
             {
                 Hour++;
                 Minute = 0;
+                if(Hour >= 17){
+                    shiftOver = true;
+                    s.EndGame();
+                }
             }
             time = minuteToRealTime;
         }

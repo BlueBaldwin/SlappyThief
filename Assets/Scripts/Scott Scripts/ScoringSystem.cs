@@ -7,7 +7,7 @@ public class ScoringSystem : MonoBehaviour
 {
 	// Start with 100 points (try and retain as many points as possible
 	public static float tidinessScore = 100.0f;
-	private static int totalScore;
+	private static float totalScore;
 	private float serviceScore = 100.0f;
 	private float securityScore = 100.0f;
 
@@ -53,12 +53,12 @@ public class ScoringSystem : MonoBehaviour
 		}
 	}
 
-	public int GetTotalScore()
+	public void GetTotalScore()
 	{
-		float floatTotal = (securityScore + serviceScore + tidinessScore);
-		int totalScore = (int) floatTotal;
-
-		return totalScore;
+		ScoreStatics.securityScore = securityScore;
+		ScoreStatics.tidinessScore = tidinessScore;
+		ScoreStatics.serviceScore = serviceScore;
+		ScoreStatics.totalScore = securityScore + tidinessScore + serviceScore;
 	}
 }
     

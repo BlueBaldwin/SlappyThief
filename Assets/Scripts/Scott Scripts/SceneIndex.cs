@@ -9,7 +9,7 @@ public class SceneIndex : MonoBehaviour
 
     void start()
     {
-        //sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     void Update()
@@ -27,5 +27,9 @@ public class SceneIndex : MonoBehaviour
      public void StartGame()
     {
         SceneManager.LoadScene(2);
+    }
+    public void EndGame()
+    {
+        SceneManager.LoadScene(3);
     }
 }

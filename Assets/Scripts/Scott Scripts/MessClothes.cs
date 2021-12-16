@@ -72,7 +72,7 @@ public class MessClothes : MonoBehaviour
 
     void MessPenalty()
     {
-        ScoringSystem.totalScore -= Time.deltaTime;
-        Debug.Log(ScoringSystem.totalScore);
+        ScoringSystem.tidinessScore -= Time.deltaTime;
+        Debug.Log(ScoringSystem.tidinessScore);
     }
 }
