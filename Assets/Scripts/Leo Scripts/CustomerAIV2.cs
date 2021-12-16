@@ -106,6 +106,7 @@ public class CustomerAIV2 : MonoBehaviour
                                                                                 //current waypoints available
             Debug.Log(inShopWaypointIndex);
             nma.SetDestination(waypoint[currentWaypoint].transform.position);   //set the customers position to a waypoint
+            transform.LookAt(waypoint[currentWaypoint].transform.position);
             inShopWaypointIndex++;
             if (inShopWaypointIndex == 5) {                                     //when the inShopWaypointIndex is equal to 5
                 isCustomerInShop = false;
@@ -115,7 +116,7 @@ public class CustomerAIV2 : MonoBehaviour
 
     IEnumerator Timer () {                      //so the coroutine timer has been activate
         waitTimer = false;                      //turn the timer to false so the player doesn't move around randomly
-        yield return new WaitForSeconds(2);     //have the customer wait for [x] amount of seconds
+        yield return new WaitForSeconds(10);     //have the customer wait for [x] amount of seconds
         Debug.Log("Customer is waiting");       //just to check in the console whether customer is waiting or not
         waitTimer = true;                       //turn it back to true so that in update it will be able to come back into this coroutine
 
