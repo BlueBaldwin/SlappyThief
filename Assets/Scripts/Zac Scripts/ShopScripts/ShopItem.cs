@@ -27,6 +27,7 @@ public class ShopItem : MonoBehaviour
              InteractionBehaviour ib = gameObject.AddComponent<InteractionBehaviour>(); //should automatically add a rigidbody too
             ib.manager = FindObjectOfType<InteractionManager>();
             ib.OnContactBegin += Contact;
+            ib.ignoreContact = true;
             GetComponent<Rigidbody>().useGravity = false;
 
         }
@@ -53,7 +54,7 @@ public class ShopItem : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision other) {
+    public void OnCollisionEnter(Collision other) {
         Contact();
     }
     void Contact()

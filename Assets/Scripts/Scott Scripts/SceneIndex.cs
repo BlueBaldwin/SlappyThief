@@ -10,6 +10,7 @@ public class SceneIndex : MonoBehaviour
     void start()
     {
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Update()

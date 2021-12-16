@@ -1254,7 +1254,7 @@ MonoBehaviour:
   isPendingItemRequest: 0
   MoodDelta: 10
   SlapVelocity: 100
-  CartItemOffset: {x: 1, y: 0, z: 0}
+  CartItemOffset: {x: 2, y: 0, z: -0.5}
   PickupRange: {x: 0.5, y: 0.5, z: 0.5}
   PickupBoxOffset: {x: 0, y: 0.25, z: 0}
   BaseShakeTimer: 1

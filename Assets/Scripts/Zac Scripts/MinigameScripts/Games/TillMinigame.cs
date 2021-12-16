@@ -26,8 +26,6 @@ public class TillMinigame : Minigame
 
     //these were bugged so got rid of them for now 
 
-    float ItemScale = 0.75f;
-
     public override void Start()
     {
         base.Start();
@@ -101,8 +99,7 @@ public class TillMinigame : Minigame
         {
             CurrentItem = CurrentShopper.ShopperCart[0];
             CurrentShopper.ShopperCart.Remove(CurrentItem);
-            CurrentItem.transform.localScale *= ItemScale;
-            CurrentItem.GetComponent<BoxCollider>().size.Scale(Vector3.one * 1.25f);           
+            CurrentItem.GetComponent<BoxCollider>().size.Scale(Vector3.one * 1.5f);           
             SpawnItem(CurrentItem);
         }
 
@@ -115,12 +112,12 @@ public class TillMinigame : Minigame
 
     private void SpawnItem(ShopItem s)
     {
-        CurrentItem.transform.position = ClothesSpawnPoint.position;
-        Rigidbody rb = CurrentItem.gameObject.GetComponent<Rigidbody>();
+        s.transform.position = ClothesSpawnPoint.position;
+        Rigidbody rb = s.gameObject.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.isKinematic = false;
         rb.useGravity = true;
-        rb.mass = 1000000;
+        
     }
 
     private void OnTriggerExit(Collider other)

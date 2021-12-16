@@ -57,15 +57,6 @@ public class FoldMinigame : Minigame
     public override void Load()
     {
         base.Load();
-        GameObject g = Instantiate(ClothingItem, gameObject.transform);
-        ShopItem s;
-        if ((s = g.GetComponent<ShopItem>()) != null)
-        {
-            Destroy(s); //dont want our representation of the different shop items to actually have shopitem behaviour.             
-        }
-        SpawnedObjects.Add(g);
-        g.transform.position += ClothingOffset;
-
         //Spawns 3 sets of 2 color coded linked foldpoints, see Foldpoint.cs 
         CreateFoldPointPair(new Vector3(-FoldPointOffsets.x, FoldPointOffsets.y, 0), new Vector3(-FoldPointOffsets.x * 0.5f, FoldPointOffsets.y, FoldPointOffsets.z));
         CreateFoldPointPair(new Vector3(FoldPointOffsets.x, FoldPointOffsets.y, 0), new Vector3(FoldPointOffsets.x * 0.5f, FoldPointOffsets.y, FoldPointOffsets.z));
